@@ -1,0 +1,14 @@
+GET http://localhost:5000/
+
+###
+
+GET http://localhost:5000/api/test
+
+###
+
+POST http://localhost:5000/api/test
+Content-Type: application/json
+
+{
+    "name": "test"
+}
