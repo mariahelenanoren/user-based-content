@@ -1,14 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("express-async-errors");
-const testRouter = require("./routers/test.router.js");
+const userRouter = require("./routers/user.router.js");
 const app = express();
 
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Hej");
-});
-app.use(testRouter);
+app.use(userRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
