@@ -2,9 +2,20 @@ GET http://localhost:5000/api/user
 
 ###
 
-GET http://localhost:5000/api/post/:id
+GET http://localhost:5000/api/post
 
 ###
+
+GET http://localhost:5000/api/post/:id
+Content-Type: application/json
+
+{
+    "_id": "608177bbcafa6a64c24b386a",
+    "text": "Hello world"
+}
+
+###
+
 POST http://localhost:5000/api/register 
 Content-Type: application/json
 
@@ -37,16 +48,18 @@ POST http://localhost:5000/api/post
 Content-Type: application/json
 
 {
-"text": "Hello world"
+"text": "Hello world2"
 }
 
 ###
 
-POST http://localhost:5000/api/post/:id
-
-###
-
 PUT http://localhost:5000/api/post/:id
+Content-Type: application/json
+
+{
+    "_id": "60816ec3e7c77b55f1937759",
+    "text": "Goodbye world"
+}
 
 ###
 
@@ -61,6 +74,11 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:5000/api/post/:id
+Content-Type: application/json
+
+{
+    "_id": "60816ec3e7c77b55f1937759"
+}
 
 ###
 
