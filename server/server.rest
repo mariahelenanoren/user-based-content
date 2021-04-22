@@ -2,9 +2,41 @@ GET http://localhost:5000/api/user
 
 ###
 
-POST http://localhost:5000/api/user
+POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-    "userName": "test"
+    "userName": "test",
+    "firstName": "Maria",
+    "lastName": "Norén",
+    "email": "marialinder97@hotmail.com",
+    "password": "maria123",
+    "role": "user"
 }
+
+###
+
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+    "userName": "test",
+    "firstName": "Maria",
+    "lastName": "Norén",
+    "email": "marialinder97@hotmail.com",
+    "password": "maria123",
+    "role": "user"
+}
+
+###
+
+POST http://localhost:5000/api/post
+Content-Type: application/json
+
+{
+    "text": "Hello world"
+}
+
+###
+
+DELETE http://localhost:5000/api/logout
