@@ -12,4 +12,14 @@ router.post("/api/post", async (req, res) => {
   res.status(201).json(doc);
 });
 
+router.put("/api/post", async (req, res) => {
+  const doc = await PostModel.updateOne(req.body);
+  res.status(201).json(doc);
+});
+
+router.delete("/api/post", async (req, res) => {
+  const doc = await PostModel.deleteOne(req.body);
+  res.status(201).json(doc);
+});
+
 module.exports = router;
