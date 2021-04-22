@@ -46,4 +46,14 @@ router.delete("/api/logout", (req, res) => {
   res.status(200).json("Logout successful");
 });
 
+router.put("/api/user", async (req, res) => {
+  const { role, _id } = req.body;
+  if (req.session.role !== "admin") {
+    return res.status(403).json("Access denied");
+  }
+
+  const doc = await UserModel.updateOne({ _id: _id }, { role: role });
+  res.status(200).json(doc);
+});
+
 module.exports = router;
