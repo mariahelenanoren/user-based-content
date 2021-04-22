@@ -7,7 +7,15 @@ router.get("/api/user", async (req, res) => {
   res.status(200).json(docs);
 });
 
-router.post("/api/user", async (req, res) => {
+router.post("/api/register", async (req, res) => {
+  const { userName } = req.body;
+  const users = await UserModel.find({});
+  const existingUser = users.find((u) => u.userName === userName);
+
+  if (existingUser) {
+    return res.status(400).json("Username is already in use");
+  }
+
   const doc = await UserModel.create(req.body);
   res.status(201).json("Registration successful");
 });
