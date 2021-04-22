@@ -9,9 +9,6 @@ router.get("/api/user", async (req, res) => {
 
 router.post("/api/user", async (req, res) => {
   const doc = await UserModel.create(req.body);
-<<<<<<< HEAD
-  res.status(201).json(doc);
-=======
   res.status(201).json("Registration successful");
 });
 
@@ -39,7 +36,6 @@ router.delete("/api/logout", (req, res) => {
 
   req.session = null;
   res.status(200).json("Logout successful");
->>>>>>> 6b88614026363a0ae8064b2a23514ad0cdd05e13
 });
 
 module.exports = router;
