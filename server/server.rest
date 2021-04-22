@@ -1,14 +1,10 @@
-GET http://localhost:5000/
+GET http://localhost:5000/api/user
 
 ###
 
-GET http://localhost:5000/api/test
-
-###
-
-POST http://localhost:5000/api/test
+POST http://localhost:5000/api/user
 Content-Type: application/json
 
 {
-    "name": "test"
+    "userName": "test"
 }
