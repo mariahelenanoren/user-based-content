@@ -34,7 +34,7 @@ router.post("/api/login", async (req, res) => {
   req.session.userName = user.userName;
   req.session.role = user.role;
 
-  res.status(204).json("Login successful");
+  res.status(200).json("Login successful");
 });
 
 router.delete("/api/logout", (req, res) => {
@@ -43,7 +43,7 @@ router.delete("/api/logout", (req, res) => {
   }
 
   req.session = null;
-  res.status(200).json("Logout succesful");
+  res.status(200).json("Logout successful");
 });
 
 module.exports = router;
