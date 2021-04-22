@@ -8,17 +8,17 @@ router.get("/api/post", async (req, res) => {
 });
 
 router.post("/api/post", async (req, res) => {
-  const doc = await PostModel.create(req.body);
+  const doc = await PostModel.create(req.body.id);
   res.status(201).json(doc);
 });
 
 router.put("/api/post", async (req, res) => {
-  const doc = await PostModel.updateOne(req.body);
+  const doc = await PostModel.updateOne(req.body.id);
   res.status(201).json(doc);
 });
 
 router.delete("/api/post", async (req, res) => {
-  const doc = await PostModel.deleteOne(req.body);
+  const doc = await PostModel.deleteOne(req.body.id);
   res.status(201).json(doc);
 });
 
