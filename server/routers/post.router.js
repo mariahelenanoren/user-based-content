@@ -20,7 +20,7 @@ router.post("/api/post", async (req, res) => {
   }
   const body = { ...req.body, user: req.session.user };
   const doc = await PostModel.create(body);
-  res.status(201).json(doc);
+  res.status(201).json("New post created");
 });
 
 router.use((req, res, next) => {
@@ -34,13 +34,13 @@ router.use((req, res, next) => {
 router.put("/api/post/:id", async (req, res) => {
   const { _id, text } = req.body;
   const doc = await PostModel.updateOne({ _id: _id }, { text: text });
-  res.status(201).json(doc);
+  res.status(201).json("Post successfully updated");
 });
 
 router.delete("/api/post/:id", async (req, res) => {
   const { _id } = req.body;
   const doc = await PostModel.deleteOne({ _id: _id });
-  res.status(201).json(doc);
+  res.status(201).json("Post successfully deleted");
 });
 
 module.exports = router;

@@ -7,6 +7,12 @@ router.get("/api/user", async (req, res) => {
   res.status(200).json(docs);
 });
 
+router.get("/api/user/:id", async (req, res) => {
+  const { _id } = req.body;
+  const doc = await UserModel.find({ _id: _id });
+  res.status(200).json(doc);
+});
+
 router.post("/api/register", async (req, res) => {
   const { userName } = req.body;
   const users = await UserModel.find({});
@@ -46,14 +52,23 @@ router.delete("/api/logout", (req, res) => {
   res.status(200).json("Logout successful");
 });
 
-router.put("/api/user", async (req, res) => {
-  const { role, _id } = req.body;
+router.use((req, res, next) => {
   if (req.session.role !== "admin") {
     return res.status(403).json("Access denied");
   }
+  next();
+});
 
+router.put("/api/user/:id", async (req, res) => {
+  const { role, _id } = req.body;
   const doc = await UserModel.updateOne({ _id: _id }, { role: role });
-  res.status(200).json(doc);
+  res.status(200).json("User role successfully updated");
+});
+
+router.delete("/api/user/:id", async (req, res) => {
+  const { _id } = req.body;
+  const doc = await UserModel.deleteOne({ _id: _id });
+  res.status(200).json("User successfully deleted");
 });
 
 module.exports = router;
