@@ -1,8 +1,9 @@
 import { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+
 interface Props {}
 
-const RegistrationPage: React.FC<Props> = () => {
+const LoginPage: React.FC<Props> = () => {
    return (
       <div style={mainStyle}>
          <div style={box}>
@@ -39,7 +40,7 @@ const RegistrationPage: React.FC<Props> = () => {
    );
 };
 
-export default RegistrationPage;
+export default LoginPage;
 
 const mainStyle: CSSProperties = {
    display: 'flex',
