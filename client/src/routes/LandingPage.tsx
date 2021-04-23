@@ -1,12 +1,12 @@
 import React, { CSSProperties } from "react";
-import DesktopMenu from "./DesktopMenu";
-import Header from "./Header";
-import MobileHeader from "./MobileHeader";
+import LandingDesktopMenu from "../components/LandingDesktopMenu";
+import Header from "../components/Header";
+import MobileHeader from "../components/MobileHeader";
 
-export default function landingPage() {
+export default function LandingPage() {
   return (
     <div style={mainContainer} className="mainContainer">
-      <DesktopMenu />
+      <LandingDesktopMenu />
       <div className="contentContainer" style={contentContainer}>
         <div style={headerContainer}>
           <MobileHeader />

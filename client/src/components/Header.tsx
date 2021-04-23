@@ -8,7 +8,7 @@ interface Props {
 export default function Header(props: Props) {
   return (
     <div style={header}>
-      <h2>{props.title}</h2>
+      <h2 style={title}>{props.title}</h2>
       {props.postButton ? <button style={postButton}>Ny post</button> : null}
     </div>
   );
@@ -33,4 +33,8 @@ const postButton: CSSProperties = {
   borderRadius: "0.5rem",
   fontSize: "1rem",
   fontWeight: 600,
+};
+
+const title: CSSProperties = {
+  fontSize: "1rem",
 };
