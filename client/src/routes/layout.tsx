@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import RegistrationPage from './registrationPage';
 import LoginPage from './loginPage';
+import UserPage from './UserPage';
 
 interface Props {}
 
@@ -13,6 +14,7 @@ const Layout: React.FC<Props> = () => {
             <Route exact path="/" component={LandingPage} />
             <Route path="/registration" component={RegistrationPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/user"  component={UserPage} />
          </Switch>
       </div>
    );
