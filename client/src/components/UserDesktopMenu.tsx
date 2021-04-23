@@ -12,7 +12,12 @@ export default function UserDesktopMenu(props: Props) {
 
   return (
     <div className="desktopMenu" style={desktopMenu}>
+        <div style={profilePictureContainer}>
+        {user.role === "admin" ? 
+            <div style={adminBadge}>admin</div>
+        : null}
         <img alt={user.userName} style={profilePicture} src="../../assets/default-user.png"></img>
+        </div>
         <h3 style={userName}>{user.userName}</h3>
         <nav style={nav}>
             <ul style={navList}>
@@ -45,6 +50,20 @@ const desktopMenu: CSSProperties = {
   zIndex: 1000,
 };
 
+const profilePictureContainer: CSSProperties = {
+    position: "relative"
+}
+
+const adminBadge: CSSProperties = {
+    position: "absolute",
+    borderRadius: "0.8rem",
+    top: "0.5rem",
+    left: "-1rem",
+    backgroundColor: "#4780EE",
+    fontSize: "0.8rem",
+    padding: "0.3rem 0.7rem",
+}
+
 const profilePicture: CSSProperties = {
     borderRadius: "100%",
     width: "8rem",
@@ -63,7 +82,6 @@ const navList: CSSProperties = {
     listStyle: "none",
     padding: 0,
     margin: 0,
-    borderTop: "1px #5A5A5A solid",
     borderBottom: "1px #5A5A5A solid"
 }
 
@@ -71,7 +89,6 @@ const navItem: CSSProperties = {
     padding: "1rem 1.5rem",
     textAlign: "left",
     borderTop: "1px #5A5A5A solid",
-    borderBottom: "1px #5A5A5A solid"
 }
 
 const buttonContainer: CSSProperties = {

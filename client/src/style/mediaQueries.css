@@ -7,6 +7,10 @@
     display: none !important;
   }
 
+  .headerContainer {
+    width: 100% !important;
+  }
+
   .mobileHeader {
     display: flex !important;
   }

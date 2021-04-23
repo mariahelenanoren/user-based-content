@@ -13,7 +13,7 @@ export default function UserPage() {
     <div style={mainContainer} className="mainContainer">
         <UserDesktopMenu user={user} />
       <div className="contentContainer" style={contentContainer}>
-        <div style={headerContainer}>
+        <div className="headerContainer" style={headerContainer}>
           <MobileHeader />
           <Header title={"Dina inlägg"} postButton={true} />
         </div>
@@ -35,13 +35,13 @@ const mainContainer: CSSProperties = {
 
 const contentContainer: CSSProperties = {
   marginLeft: "16rem",
-  width: "100%",
+  width: "calc(100% - 16rem)",
   height: "100%",
 };
 
 const headerContainer: CSSProperties = {
   position: "fixed",
-  width: "100%",
+  width: "calc(100% - 16rem)",
   height: "fit-content",
 };
 

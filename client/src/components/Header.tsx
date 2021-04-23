@@ -28,10 +28,10 @@ const header: CSSProperties = {
 const postButton: CSSProperties = {
   backgroundColor: "#4780EE",
   color: "#ffff",
-  padding: "0.4rem 1rem",
+  padding: "0.7rem 3.5rem",
   border: "none",
   borderRadius: "0.5rem",
-  fontSize: "1rem",
+  fontSize: "0.9rem",
   fontWeight: 600,
 };
 
