@@ -1,4 +1,5 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 
 export default function LandingDesktopMenu() {
   return (
@@ -6,12 +7,16 @@ export default function LandingDesktopMenu() {
       <h1 style={siteTitle}>Postr</h1>
       <div style={buttonContainer}>
         <div style={innerButtonContainer}>
-          <button className="filledButton" style={filledButton}>
-            Logga in
-          </button>
-          <button className="outlinedButton" style={outlinedButton}>
-            Registrera dig
-          </button>
+          <Link to={"/login"}>
+            <button className="filledButton" style={filledButton}>
+              Logga in
+            </button>
+          </Link>
+          <Link to={"/registration"}>
+            <button className="outlinedButton" style={outlinedButton}>
+              Registrera dig
+            </button>
+          </Link>
         </div>
         <button className="textButton" style={textButton}>
           Admin? Registrera dig här
@@ -54,6 +59,7 @@ const innerButtonContainer: CSSProperties = {
 };
 
 const filledButton: CSSProperties = {
+  width: "100%",
   marginBottom: "0.8rem",
   padding: "0.5rem 1rem",
   backgroundColor: "#4780EE",
@@ -65,6 +71,7 @@ const filledButton: CSSProperties = {
 };
 
 const outlinedButton: CSSProperties = {
+  width: "100%",
   padding: "0.5rem 1rem",
   borderColor: "#4780EE",
   backgroundColor: "none",
