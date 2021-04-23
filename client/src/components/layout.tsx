@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { Route, Switch } from 'react-router-dom';
-
+// import LandingPage from './landingPage';
 import LoginPage from './loginPage';
 // import RegistrationPage from '/registrationPage.tsx';
 
