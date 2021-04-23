@@ -1,6 +1,5 @@
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import RegistrationPage from "../routes/registrationPage";
 import { useHistory } from 'react-router-dom';
 interface Props {
 }
