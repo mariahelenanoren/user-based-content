@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+  .mainContainer {
+    flex-direction: column !important;
+  }
+
+  .desktopMenu {
+    display: none !important;
+  }
+
+  .mobileHeader {
+    display: flex !important;
+  }
+
+  .contentContainer {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .content {
+    padding: 1.5rem !important;
+    padding-top: 9rem !important;
+  }
+}
