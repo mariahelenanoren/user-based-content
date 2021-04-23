@@ -1,14 +1,14 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import Layout from "./routes/layout";
-import "./style/mediaQueries.css";
-import "./style/style.css";
+import { BrowserRouter } from 'react-router-dom';
+import Layout from './routes/layout';
 
 function App() {
-  return (
-    <Router>
-    <Layout />
-    </Router>
-  );
+   return (
+      <div className="App">
+         <BrowserRouter>
+            <Layout />
+         </BrowserRouter>
+      </div>
+   );
 }
 
 export default App;
