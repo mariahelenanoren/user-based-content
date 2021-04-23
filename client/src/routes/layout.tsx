@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './LandingPage';
-// import RegistrationPage from '/registrationPage';
+import RegistrationPage from './registrationPage';
 import LoginPage from './loginPage';
 
 interface Props {}
@@ -11,7 +11,7 @@ const Layout: React.FC<Props> = () => {
       <div style={ mainStyle }>
          <Switch>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route path="/registration" component={RegistrationPage} /> */}
+            <Route path="/registration" component={RegistrationPage} />
             <Route path="/login" component={LoginPage} />
          </Switch>
       </div>
