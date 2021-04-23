@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-
+import { Link } from 'react-router-dom';
 interface Props {}
 
 const LoginPage: React.FC<Props> = () => {
@@ -29,6 +29,10 @@ const LoginPage: React.FC<Props> = () => {
                <div>
                   <button style={button}>Logga in</button>
                </div>
+               <div>
+               <Link to="">Har du glömt ditt lösenord? </Link>
+               <Link to="/registration">Registrera dig för Postr</Link>
+               </div>
             </form>
          </div>
       </div>
@@ -41,7 +45,7 @@ const mainStyle: CSSProperties = {
    display: 'flex',
    flexDirection: 'column',
    width: '100%',
-   height: '100%',
+   height: '100vh',
    justifyContent: 'center',
    alignItems: 'center',
    textAlign: 'center',

@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import LandingPage from './landingPage';
-// import RegistrationPage from '/registrationPage.tsx';
+// import RegistrationPage from '/registrationPage';
 import LoginPage from './loginPage';
 
 interface Props {}
