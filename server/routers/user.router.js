@@ -1,5 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/user.model");
+const bcrypt = require('bcrypt');
 const router = express.Router();
 
 router.get("/api/user", async (req, res) => {
@@ -14,15 +15,17 @@ router.get("/api/user/:id", async (req, res) => {
 });
 
 router.post("/api/register", async (req, res) => {
-  const { userName } = req.body;
+  const { userName, password } = req.body;
   const users = await UserModel.find({});
   const existingUser = users.find((u) => u.userName === userName);
 
   if (existingUser) {
     return res.status(400).json("Username is already in use");
   }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const body = {...req.body, password: hashedPassword};
 
-  const doc = await UserModel.create(req.body);
+  const doc = await UserModel.create(body);
   res.status(201).json("Registration successful");
 });
 
@@ -31,7 +34,7 @@ router.post("/api/login", async (req, res) => {
   const users = await UserModel.find({});
   const user = users.find((u) => u.userName === userName);
 
-  if (!user || password !== user.password) {
+  if (!user || !await bcrypt.compare(password, user.password)) {
     res.status(401).json("Incorrect password or username");
     return;
   }
