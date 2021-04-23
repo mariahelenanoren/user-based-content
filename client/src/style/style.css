@@ -1,0 +1,13 @@
+.outlinedButton:hover {
+  color: #ffff !important;
+  background-color: #4780ee !important;
+}
+
+.filledButton:hover {
+  background-color: #3169da !important;
+  border-color: #3169da !important;
+}
+
+.textButton:hover {
+  text-decoration: underline !important;
+}
