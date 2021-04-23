@@ -12,12 +12,13 @@ const RegistrationPage: React.FC<Props> = () => {
                <div>
                <input style={input} type="firstName" name="firstName" id="firstName" placeholder={'Förnamn'}/>
                <input style={input} type="lastName" name="lastName" id="lastName" placeholder={'Efternamn'}/>
+               <input style={input} type="userName" name="userName" id="userName" placeholder={'Användarnamn'}/>
                   <input
                      style={input}
                      type="email"
                      name="email"
                      id="email"
-                     placeholder={'Epost eller användarnamn'}
+                     placeholder={'Epost'}
                   />
                </div>
                <div>
@@ -39,10 +40,10 @@ const RegistrationPage: React.FC<Props> = () => {
                   />
                </div>
                <div>
-                  <button style={button}>Slutför registrering</button>
+                  <button style={button}>Registrera dig</button>
                </div>
                <div>
-               <Link to="">Logga in</Link>
+               <Link to="">Admin? Registrera dig här</Link>
                </div>
             </form>
          </div>
@@ -89,8 +90,7 @@ const button: CSSProperties = {
    background: '#2554c1',
    borderRadius: 6,
    color: '#d3dde4',
-   fontSize: '1.3rem',
-   fontStretch: 'expanded',
+   fontSize: '1.1rem',
    margin: '1rem',
    width: '12rem',
    height: '2.5rem',
