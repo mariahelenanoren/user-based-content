@@ -1,19 +1,31 @@
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import RegistrationPage from "../routes/registrationPage";
+import { useHistory } from 'react-router-dom';
+interface Props {
+}
 
-export default function LandingDesktopMenu() {
+const LandingDesktopMenu: React.FC<Props> = () => {
+  const history = useHistory();
+  const goToLoginPage = () => {
+    history.push('/login');
+  };
+  const goToRegistrationPage = () => {
+    history.push('/registration');
+  };
+
   return (
     <div className="desktopMenu" style={desktopMenu}>
       <h1 style={siteTitle}>Postr</h1>
       <div style={buttonContainer}>
         <div style={innerButtonContainer}>
           <Link to={"/login"}>
-            <button className="filledButton" style={filledButton}>
+            <button className="filledButton" style={filledButton} onClick={goToLoginPage}>
               Logga in
             </button>
           </Link>
           <Link to={"/registration"}>
-            <button className="outlinedButton" style={outlinedButton}>
+            <button className="outlinedButton" style={outlinedButton} onClick={goToRegistrationPage}>
               Registrera dig
             </button>
           </Link>
@@ -25,6 +37,8 @@ export default function LandingDesktopMenu() {
     </div>
   );
 }
+
+export default LandingDesktopMenu;
 
 const desktopMenu: CSSProperties = {
   position: "fixed",

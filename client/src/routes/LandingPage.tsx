@@ -2,8 +2,11 @@ import React, { CSSProperties } from "react";
 import LandingDesktopMenu from "../components/LandingDesktopMenu";
 import Header from "../components/Header";
 import MobileHeader from "../components/MobileHeader";
+interface Props {
+}
 
-export default function LandingPage() {
+const LandingPage: React.FC<Props> = (handleClick) => {
+
   return (
     <div style={mainContainer} className="mainContainer">
       <LandingDesktopMenu />
@@ -19,6 +22,8 @@ export default function LandingPage() {
     </div>
   );
 }
+
+export default LandingPage;
 
 const mainContainer: CSSProperties = {
   display: "flex",
