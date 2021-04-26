@@ -2,9 +2,13 @@ import React, { CSSProperties } from "react";
 import LandingDesktopMenu from "../components/LandingDesktopMenu";
 import Header from "../components/Header";
 import MobileHeader from "../components/MobileHeader";
+import PostCard from "../components/PostCard";
+
+
 
 export default function LandingPage() {
-  return (
+
+  return ( 
     <div style={mainContainer} className="mainContainer">
       <LandingDesktopMenu />
       <div className="contentContainer" style={contentContainer}>
@@ -13,12 +17,15 @@ export default function LandingPage() {
           <Header title={"Senaste inläggen"} postButton={false} />
         </div>
         <div className="content" style={content}>
+          <PostCard/>
           {/* Render of page content */}
         </div>
       </div>
     </div>
+  
   );
 }
+
 
 const mainContainer: CSSProperties = {
   display: "flex",
