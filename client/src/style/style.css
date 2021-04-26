@@ -11,3 +11,7 @@
 .textButton:hover {
   text-decoration: underline !important;
 }
+
+.navItem:hover {
+  background-color: #272727 !important;
+}
