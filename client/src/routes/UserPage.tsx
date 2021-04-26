@@ -1,25 +1,21 @@
-import MobileHeader from "../components/MobileHeader"
-import Header from "../components/Header"
+import MobileHeader from "../components/MobileHeader";
+import Header from "../components/Header";
 import { CSSProperties } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
+import UserRoutes from "./UserRoutes";
 
 export default function UserPage() {
-    const user = {
-        userName: "User123321",
-        role: "admin"
-    }
-    
-    return(
+  const user = {
+    userName: "User123321",
+    role: "admin",
+  };
+
+  return (
     <div style={mainContainer} className="mainContainer">
-        <UserDesktopMenu user={user} />
+      <UserDesktopMenu user={user} />
       <div className="contentContainer" style={contentContainer}>
-        <div className="headerContainer" style={headerContainer}>
-          <MobileHeader />
-          <Header title={"Dina inlägg"} postButton={true} />
-        </div>
-        <div className="content" style={content}>
-          {/* Render of page content */}
-        </div>
+        <MobileHeader />
+        <UserRoutes />
       </div>
     </div>
   );
@@ -37,18 +33,4 @@ const contentContainer: CSSProperties = {
   marginLeft: "16rem",
   width: "calc(100% - 16rem)",
   height: "100%",
-};
-
-const headerContainer: CSSProperties = {
-  position: "fixed",
-  width: "calc(100% - 16rem)",
-  height: "fit-content",
-};
-
-const content: CSSProperties = {
-  padding: "2.5rem",
-  paddingTop: "4rem",
-  height: "100%",
-  width: "100%",
-  backgroundColor: "#111111",
 };
