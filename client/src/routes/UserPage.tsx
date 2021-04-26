@@ -1,27 +1,32 @@
-import MobileHeader from "../components/MobileHeader"
-import Header from "../components/Header"
-import { CSSProperties } from "react";
+import MobileHeader from "../components/MobileHeader";
+import Header from "../components/Header";
+import { CSSProperties, useState } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
+import UserMobileMenu from "../components/UserMobileMenu";
 
 export default function UserPage() {
-    const user = {
-        userName: "User123321",
-        role: "admin"
-    }
-    
-    return(
-    <div style={mainContainer} className="mainContainer">
+  const [menu, setMenuIsOpen] = useState(false);
+  const user = {
+    userName: "User123321",
+    role: "admin",
+  };
+
+  return (
+    <>
+      {menu && <UserMobileMenu user={user} />}
+      <div style={mainContainer} className="mainContainer">
         <UserDesktopMenu user={user} />
-      <div className="contentContainer" style={contentContainer}>
-        <div className="headerContainer" style={headerContainer}>
-          <MobileHeader />
-          <Header title={"Dina inlägg"} postButton={true} />
-        </div>
-        <div className="content" style={content}>
-          {/* Render of page content */}
+        <div className="contentContainer" style={contentContainer}>
+          <div className="headerContainer" style={headerContainer}>
+            <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
+            <Header title={"Dina inlägg"} postButton={true} />
+          </div>
+          <div className="content" style={content}>
+            {/* Render of page content */}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

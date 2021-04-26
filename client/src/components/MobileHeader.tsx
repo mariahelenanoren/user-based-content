@@ -1,13 +1,34 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 
-interface Props {}
+interface Props {
+  setMenuIsOpen: (value: React.SetStateAction<boolean>) => void;
+  menu: boolean;
+}
 
 export default function MobileHeader(props: Props) {
+  useEffect(() => {
+    function checkWindowWidth() {
+      console.log(props.menu);
+      if (window.innerWidth > 768) {
+        props.setMenuIsOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", checkWindowWidth);
+
+    return function cleanup() {
+      window.removeEventListener("resize", checkWindowWidth);
+    };
+  });
+
   return (
     <div className="mobileHeader" style={mobileHeader}>
       <h1 style={siteTitle}>Postr</h1>
-      <MenuIcon style={menuIcon} />
+      <MenuIcon
+        style={menuIcon}
+        onClick={() => props.setMenuIsOpen(!props.menu)}
+      />
     </div>
   );
 }
