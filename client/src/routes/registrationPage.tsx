@@ -3,19 +3,22 @@ import { Link } from 'react-router-dom';
 
 interface Props {}
 
-const LoginPage: React.FC<Props> = () => {
+const RegistrationPage: React.FC<Props> = () => {
    return (
       <div style={mainStyle}>
          <div style={box}>
             <form>
                <div style={title}>Logga in på Postr</div>
                <div>
+               <input style={input} type="firstName" name="firstName" id="firstName" placeholder={'Förnamn'}/>
+               <input style={input} type="lastName" name="lastName" id="lastName" placeholder={'Efternamn'}/>
+               <input style={input} type="userName" name="userName" id="userName" placeholder={'Användarnamn'}/>
                   <input
                      style={input}
                      type="email"
                      name="email"
                      id="email"
-                     placeholder={'Epost eller användarnamn'}
+                     placeholder={'Epost'}
                   />
                </div>
                <div>
@@ -28,11 +31,19 @@ const LoginPage: React.FC<Props> = () => {
                   />
                </div>
                <div>
-                  <button style={button}>Logga in</button>
+                  <input
+                     style={input}
+                     type="password"
+                     name="password"
+                     id="password"
+                     placeholder={'Verifiera lösenord'}
+                  />
                </div>
                <div>
-               <Link to="">Har du glömt ditt lösenord? </Link>
-               <Link to="/registration">Registrera dig för Postr</Link>
+                  <button style={button}>Registrera dig</button>
+               </div>
+               <div>
+               <Link to="">Admin? Registrera dig här</Link>
                </div>
             </form>
          </div>
@@ -40,7 +51,7 @@ const LoginPage: React.FC<Props> = () => {
    );
 };
 
-export default LoginPage;
+export default RegistrationPage;
 
 const mainStyle: CSSProperties = {
    display: 'flex',
@@ -79,8 +90,7 @@ const button: CSSProperties = {
    background: '#2554c1',
    borderRadius: 6,
    color: '#d3dde4',
-   fontSize: '1.3rem',
-   fontStretch: 'expanded',
+   fontSize: '1.1rem',
    margin: '1rem',
    width: '12rem',
    height: '2.5rem',

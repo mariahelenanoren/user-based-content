@@ -9,6 +9,14 @@ import PostCard from "../components/PostCard";
 export default function LandingPage() {
 
   return ( 
+
+interface Props {
+}
+
+const LandingPage: React.FC<Props> = (handleClick) => {
+
+  return (
+
     <div style={mainContainer} className="mainContainer">
       <LandingDesktopMenu />
       <div className="contentContainer" style={contentContainer}>
@@ -25,6 +33,8 @@ export default function LandingPage() {
   
   );
 }
+
+
 
 
 const mainContainer: CSSProperties = {
