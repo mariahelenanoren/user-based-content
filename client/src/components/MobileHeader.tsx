@@ -34,7 +34,7 @@ export default function MobileHeader(props: Props) {
 }
 
 const mobileHeader: CSSProperties = {
-  position: "relative",
+  position: "fixed",
   display: "none",
   height: "5rem",
   width: "100%",
@@ -53,4 +53,5 @@ const siteTitle: CSSProperties = {
 
 const menuIcon: CSSProperties = {
   fontSize: "1.6rem",
+  cursor: "pointer",
 };

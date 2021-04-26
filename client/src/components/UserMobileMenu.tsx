@@ -13,11 +13,14 @@ export default function UserMobileMenu(props: Props) {
   return (
     <div style={menu}>
       <div style={userContainer}>
-        <img
-          style={profilePicture}
-          alt={user.userName}
-          src="../../assets/default-user.png"
-        ></img>
+        <div style={profilePictureContainer}>
+          {user.role === "admin" ? <div style={adminBadge}>admin</div> : null}
+          <img
+            style={profilePicture}
+            alt={user.userName}
+            src="../../assets/default-user.png"
+          ></img>
+        </div>
         <h3>{user.userName}</h3>
       </div>
       <nav style={nav}>
@@ -49,7 +52,7 @@ const menu: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "#2D2D2D",
-  padding: "1.5rem 0",
+  padding: "3rem 0",
   top: "5rem",
   bottom: 0,
   right: 0,
@@ -64,10 +67,24 @@ const userContainer: CSSProperties = {
   alignItems: "center",
 };
 
+const profilePictureContainer: CSSProperties = {
+  position: "relative",
+};
+
 const profilePicture: CSSProperties = {
   width: "5rem",
   borderRadius: "100%",
   marginRight: "1.5rem",
+};
+
+const adminBadge: CSSProperties = {
+  position: "absolute",
+  borderRadius: "0.8rem",
+  top: 0,
+  left: "3.5rem",
+  backgroundColor: "#4780EE",
+  fontSize: "0.8rem",
+  padding: "0.3rem 0.7rem",
 };
 
 const nav: CSSProperties = {
