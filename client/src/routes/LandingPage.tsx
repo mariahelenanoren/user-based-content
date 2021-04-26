@@ -3,24 +3,26 @@ import LandingDesktopMenu from "../components/LandingDesktopMenu";
 import Header from "../components/Header";
 import MobileHeader from "../components/MobileHeader";
 import PostCard from "../components/postCard";
+import LandingMobileMenu from "../components/LandingMobileMenu";
 
 export default function LandingPage() {
   const [menu, setMenuIsOpen] = useState(false);
 
   return (
-    <div style={mainContainer} className="mainContainer">
-      <LandingDesktopMenu />
-      <div className="contentContainer" style={contentContainer}>
-        <div style={headerContainer}>
+    <>
+      {menu && <LandingMobileMenu />}
+      <div style={mainContainer} className="mainContainer">
+        <LandingDesktopMenu />
+        <div className="contentContainer" style={contentContainer}>
           <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
           <Header title={"Senaste inläggen"} postButton={false} />
-        </div>
-        <div className="content" style={content}>
-          <PostCard />
-          {/* Render of page content */}
+          <div className="content" style={content}>
+            <PostCard />
+            {/* Render of page content */}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -36,12 +38,6 @@ const contentContainer: CSSProperties = {
   marginLeft: "16rem",
   width: "100%",
   height: "100%",
-};
-
-const headerContainer: CSSProperties = {
-  position: "fixed",
-  width: "100%",
-  height: "fit-content",
 };
 
 const content: CSSProperties = {
