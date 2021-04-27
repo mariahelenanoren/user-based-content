@@ -1,14 +1,21 @@
 import { CSSProperties } from "@material-ui/styles";
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
   user: {
     userName: string;
     role: string;
   };
+  setMenuIsOpen: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function UserMobileMenu(props: Props) {
   const { user } = props;
+
+  const handleClick = () => {
+    props.setMenuIsOpen(false);
+  };
 
   return (
     <div style={menu}>
@@ -25,16 +32,22 @@ export default function UserMobileMenu(props: Props) {
       </div>
       <nav style={nav}>
         <ul style={navList}>
-          <li className="navItem" style={navItem}>
-            Dina posts
-          </li>
-          <li className="navItem" style={navItem}>
-            Senaste posts
-          </li>
-          {user.role === "admin" ? (
+          <Link to="/user" onClick={handleClick}>
             <li className="navItem" style={navItem}>
-              Användare
+              Dina posts
             </li>
+          </Link>
+          <Link to="/user/latest-posts" onClick={handleClick}>
+            <li className="navItem" style={navItem}>
+              Senaste posts
+            </li>
+          </Link>
+          {user.role === "admin" ? (
+            <Link to="/user/users" onClick={handleClick}>
+              <li className="navItem" style={navItem}>
+                Användare
+              </li>
+            </Link>
           ) : null}
         </ul>
       </nav>
