@@ -17,7 +17,7 @@ export default function UserRoutes() {
 }
 
 const main: CSSProperties = {
-  height: "100%",
+  minHeight: "100%",
   width: "100%",
   backgroundColor: "#111111",
 };

@@ -9,7 +9,6 @@ interface Props {
 export default function MobileHeader(props: Props) {
   useEffect(() => {
     function checkWindowWidth() {
-      console.log(props.menu);
       if (window.innerWidth > 768) {
         props.setMenuIsOpen(false);
       }
