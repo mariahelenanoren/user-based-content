@@ -1,12 +1,10 @@
 import DeleteIcon from "@material-ui/icons/Delete";
 import { CSSProperties } from "@material-ui/styles";
 import React from "react";
+import { User } from "../interfaces";
 
-export default function UserListBar() {
-  const user = {
-    userName: "User123321",
-    role: "admin",
-  };
+export default function UserListBar(props: User) {
+  const { user } = props;
 
   const handleChange = (value: string) => {
     console.log(value);
@@ -20,7 +18,7 @@ export default function UserListBar() {
           alt={user.userName}
           src="../../assets/default-user.png"
         ></img>
-        <p style={userName}>{user.userName}</p>
+        <p style={userName}>{user?.userName}</p>
       </div>
       <div style={optionsContainer}>
         <select
