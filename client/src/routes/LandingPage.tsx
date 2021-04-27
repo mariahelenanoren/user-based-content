@@ -41,8 +41,7 @@ const contentContainer: CSSProperties = {
 };
 
 const content: CSSProperties = {
-  padding: "2.5rem",
-  paddingTop: "4rem",
+  padding: "5.5rem 2.5rem 2.5rem 2.5rem",
   height: "100%",
   width: "100%",
   backgroundColor: "#111111",
