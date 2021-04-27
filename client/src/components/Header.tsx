@@ -9,14 +9,20 @@ export default function Header(props: Props) {
   return (
     <div style={header}>
       <h2 style={title}>{props.title}</h2>
-      {props.postButton ? <button style={postButton}>Ny post</button> : null}
+      {props.postButton ? (
+        <button className="filledButton" style={postButton}>
+          Ny post
+        </button>
+      ) : null}
     </div>
   );
 }
 
 const header: CSSProperties = {
+  position: "fixed",
   display: "flex",
   width: "100%",
+  top: "5rem",
   height: "4rem",
   padding: "0 2rem",
   flexDirection: "row",
@@ -33,6 +39,7 @@ const postButton: CSSProperties = {
   borderRadius: "0.5rem",
   fontSize: "0.9rem",
   fontWeight: 600,
+  cursor: "pointer",
 };
 
 const title: CSSProperties = {
