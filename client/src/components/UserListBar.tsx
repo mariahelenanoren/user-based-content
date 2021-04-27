@@ -26,23 +26,11 @@ export default function UserListBar() {
         <select
           id="select"
           style={select}
+          value={user.role}
           onChange={(e) => handleChange(e.target.value)}
         >
-          {user.role === "admin" ? (
-            <>
-              <option value="admin" selected={true}>
-                Admin
-              </option>
-              <option value="user">User</option>
-            </>
-          ) : (
-            <>
-              <option value="user" selected={true}>
-                User
-              </option>
-              <option value="admin">Admin</option>
-            </>
-          )}
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
         </select>
         <DeleteIcon style={deleteIcon} />
       </div>

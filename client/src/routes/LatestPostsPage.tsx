@@ -13,6 +13,6 @@ export default function LatestPostPage() {
 }
 
 const content: CSSProperties = {
-  padding: "2.5rem",
+  padding: "5.5rem 2.5rem 2.5rem 2.5rem",
   overflowY: "auto",
 };
