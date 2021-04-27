@@ -13,7 +13,7 @@ export default function UserPage() {
 
   return (
     <>
-      {menu && <UserMobileMenu user={user} />}
+      {menu && <UserMobileMenu user={user} setMenuIsOpen={setMenuIsOpen} />}
       <div style={mainContainer} className="mainContainer">
         <UserDesktopMenu user={user} />
         <div className="contentContainer" style={contentContainer}>
