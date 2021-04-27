@@ -8,19 +8,8 @@ export default function UserPostsPage() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const login = {
-        userName: "test5",
-        firstName: "Maria",
-        lastName: "Norén",
-        email: "4",
-        password: "maria123",
-        role: "admin",
-      };
-      const res = await makeRequest("/api/login", "POST", login);
-      console.log(res);
       const posts = await makeRequest("/api/posts/user", "GET");
       setPosts(posts);
-      console.log(posts);
     };
     fetchPosts();
   }, []);

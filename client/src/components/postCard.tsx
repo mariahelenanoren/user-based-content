@@ -26,7 +26,6 @@ const cardStyle: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-
   backgroundColor: "#2D2D2D",
   color: "white",
 };
@@ -51,6 +50,7 @@ const Icons: CSSProperties = {
   alignItems: "center",
   flexDirection: "column",
   justifyContent: "flex-end",
-  margin: "1rem;",
+  margin: "1rem",
 };
+
 const DeleteIcon: CSSProperties = {};
