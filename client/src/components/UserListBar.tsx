@@ -7,18 +7,43 @@ export default function UserListBar() {
     userName: "User123321",
     role: "admin",
   };
+
+  const handleChange = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <div style={bar}>
-      <div style={flexRow}>
+      <div style={userContainer}>
         <img
           style={profilePicture}
           alt={user.userName}
           src="../../assets/default-user.png"
         ></img>
-        <p>{user.userName}</p>
+        <p style={userName}>{user.userName}</p>
       </div>
-      <div style={flexRow}>
-        <p>User</p>
+      <div style={optionsContainer}>
+        <select
+          id="select"
+          style={select}
+          onChange={(e) => handleChange(e.target.value)}
+        >
+          {user.role === "admin" ? (
+            <>
+              <option value="admin" selected={true}>
+                Admin
+              </option>
+              <option value="user">User</option>
+            </>
+          ) : (
+            <>
+              <option value="user" selected={true}>
+                User
+              </option>
+              <option value="admin">Admin</option>
+            </>
+          )}
+        </select>
         <DeleteIcon style={deleteIcon} />
       </div>
     </div>
@@ -27,25 +52,49 @@ export default function UserListBar() {
 
 const bar: CSSProperties = {
   display: "flex",
+  flexWrap: "wrap",
   justifyContent: "space-between",
-  padding: "1rem 1.5rem",
+  padding: "0.6rem 1.5rem",
   backgroundColor: "#2D2D2D",
   marginBottom: "0.5rem",
 };
 
-const flexRow: CSSProperties = {
+const userContainer: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  margin: "0.25rem 0",
 };
 
 const profilePicture: CSSProperties = {
-  width: "3rem",
+  width: "2.5rem",
   borderRadius: "100%",
-  marginRight: "1.5rem",
+  marginRight: "1rem",
+};
+
+const userName: CSSProperties = {
+  wordBreak: "break-word",
+};
+
+const optionsContainer: CSSProperties = {
+  display: "flex",
+  flex: 1,
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  margin: "0.25rem 0",
+};
+
+const select: CSSProperties = {
+  color: "#ffff",
+  backgroundColor: "transparent",
+  padding: "0.5rem 1.7rem 0.5rem 0.7rem",
+  WebkitAppearance: "none",
+  MozAppearance: "none",
+  appearance: "none",
 };
 
 const deleteIcon: CSSProperties = {
   color: "#4780EE",
-  marginLeft: "1.5rem",
+  marginLeft: "1rem",
 };

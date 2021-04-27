@@ -23,4 +23,8 @@
   .content {
     padding: 1.5rem !important;
   }
+
+  .userListBar {
+    flex-direction: column;
+  }
 }

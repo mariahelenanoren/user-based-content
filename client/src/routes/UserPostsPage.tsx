@@ -6,7 +6,7 @@ export default function UserPostsPage() {
     <>
       <Header title={"Dina posts"} postButton={true} />
       <div className="content" style={content}>
-        <p>User</p>
+        <p>Dina posts</p>
       </div>
     </>
   );
