@@ -1,7 +1,6 @@
 import React, { CSSProperties } from "react";
 import Header from "../components/Header";
 import UserListBar from "../components/UserListBar";
-import Select from "@material-ui/core/Select";
 
 export default function AdminUsersPage() {
   return (
