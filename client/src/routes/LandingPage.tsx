@@ -17,8 +17,7 @@ export default function LandingPage() {
           <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
           <Header title={"Senaste inläggen"} postButton={false} />
           <div className="content" style={content}>
-            <PostCard />
-            {/* Render of page content */}
+            {/* <PostCard /> */}
           </div>
         </div>
       </div>

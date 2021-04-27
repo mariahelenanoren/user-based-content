@@ -18,8 +18,8 @@ app.use(
   })
 );
 
-app.use(userRouter);
 app.use(postRouter);
+app.use(userRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

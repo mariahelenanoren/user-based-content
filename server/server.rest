@@ -11,6 +11,15 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:5000/api/posts/user
+Content-Type: application/json
+
+{
+    "_id": "6081712f83c493590a981f43"
+}
+
+###
+
 GET http://localhost:5000/api/post
 
 ###
@@ -43,10 +52,10 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-    "userName": "test3",
+    "userName": "test5",
     "firstName": "Maria",
     "lastName": "Norén",
-    "email": "2",
+    "email": "4",
     "password": "maria123",
     "role": "admin"
 }
@@ -57,7 +66,7 @@ POST http://localhost:5000/api/post
 Content-Type: application/json
 
 {
-    "text": "Hello world2"
+    "text": "Hello world3"
 }
 
 ###

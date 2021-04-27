@@ -15,6 +15,13 @@ router.get("/api/post/:id", async (req, res) => {
   res.status(200).json(docs);
 });
 
+/* Gets current users posts */
+router.get("/api/posts/user", async (req, res) => {
+  const user = req.session.user;
+  const docs = await PostModel.find({ _user: user });
+  res.status(200).json(docs);
+});
+
 /* Creates a new post, only if the user is logged in */
 router.post("/api/post", async (req, res) => {
   const { user } = req.session;
