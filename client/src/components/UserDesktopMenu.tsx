@@ -1,40 +1,55 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
-    user: {
-        userName: string;
-        role: string;
-    }
+  user: {
+    userName: string;
+    role: string;
+  };
 }
 
 export default function UserDesktopMenu(props: Props) {
-    const {user} = props;
+  const { user } = props;
 
   return (
     <div className="desktopMenu" style={desktopMenu}>
-        <div style={profilePictureContainer}>
-        {user.role === "admin" ? 
-            <div style={adminBadge}>admin</div>
-        : null}
-        <img alt={user.userName} style={profilePicture} src="../../assets/default-user.png"></img>
-        </div>
-        <h3 style={userName}>{user.userName}</h3>
-        <nav style={nav}>
-            <ul style={navList}>
-                <li className="navItem" style={navItem}>Dina posts</li>
-                <li className="navItem" style={navItem}>Senaste posts</li>
-                {user.role === "admin" ? 
-                <li className="navItem" style={navItem}>Användare</li> 
-                : null}
-            </ul>
-        </nav>
-        <div style={buttonContainer}>
-            <button className="outlinedButton" style={outlinedButton}>
-                Logga ut
-            </button>
-        </div>
+      <div style={profilePictureContainer}>
+        {user.role === "admin" ? <div style={adminBadge}>admin</div> : null}
+        <img
+          alt={user.userName}
+          style={profilePicture}
+          src="../../assets/default-user.png"
+        ></img>
+      </div>
+      <h3 style={userName}>{user.userName}</h3>
+      <nav style={nav}>
+        <ul style={navList}>
+          <Link to={"/user"}>
+            <li className="navItem" style={navItem}>
+              Dina posts
+            </li>
+          </Link>
+          <Link to={"/user/latest-posts"}>
+            <li className="navItem" style={navItem}>
+              Senaste posts
+            </li>
+          </Link>
+          {user.role === "admin" ? (
+            <Link to={"/user/users"}>
+              <li className="navItem" style={navItem}>
+                Användare
+              </li>
+            </Link>
+          ) : null}
+        </ul>
+      </nav>
+      <div style={buttonContainer}>
+        <button className="outlinedButton" style={outlinedButton}>
+          Logga ut
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
 const desktopMenu: CSSProperties = {
@@ -51,54 +66,54 @@ const desktopMenu: CSSProperties = {
 };
 
 const profilePictureContainer: CSSProperties = {
-    position: "relative"
-}
+  position: "relative",
+};
 
 const adminBadge: CSSProperties = {
-    position: "absolute",
-    borderRadius: "0.8rem",
-    top: "0.5rem",
-    left: "-1rem",
-    backgroundColor: "#4780EE",
-    fontSize: "0.8rem",
-    padding: "0.3rem 0.7rem",
-}
+  position: "absolute",
+  borderRadius: "0.8rem",
+  top: "0.5rem",
+  left: "-1rem",
+  backgroundColor: "#4780EE",
+  fontSize: "0.8rem",
+  padding: "0.3rem 0.7rem",
+};
 
 const profilePicture: CSSProperties = {
-    borderRadius: "100%",
-    width: "8rem",
-}
+  borderRadius: "100%",
+  width: "8rem",
+};
 
 const userName: CSSProperties = {
-    marginBottom: "2rem"
-}
+  marginBottom: "2rem",
+};
 
 const nav: CSSProperties = {
-    width: "100%"
-}
+  width: "100%",
+};
 
 const navList: CSSProperties = {
-    width: "100%",
-    listStyle: "none",
-    padding: 0,
-    margin: 0,
-    borderBottom: "1px #5A5A5A solid"
-}
+  width: "100%",
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  borderBottom: "1px #5A5A5A solid",
+};
 
 const navItem: CSSProperties = {
-    padding: "1rem 1.5rem",
-    textAlign: "left",
-    borderTop: "1px #5A5A5A solid",
-}
+  padding: "1rem 1.5rem",
+  textAlign: "left",
+  borderTop: "1px #5A5A5A solid",
+};
 
 const buttonContainer: CSSProperties = {
-    marginTop: "1rem",
-    padding: "0 1.5rem",
-    width: "100%",
-    flex: 1,
-    display: "flex",
-    alignItems: "flex-end",
-}
+  marginTop: "1rem",
+  padding: "0 1.5rem",
+  width: "100%",
+  flex: 1,
+  display: "flex",
+  alignItems: "flex-end",
+};
 
 const outlinedButton: CSSProperties = {
   width: "100%",

@@ -7,8 +7,9 @@
     display: none !important;
   }
 
-  .headerContainer {
+  .header {
     width: 100% !important;
+    top: 5rem !important;
   }
 
   .mobileHeader {
@@ -21,7 +22,10 @@
   }
 
   .content {
-    padding: 1.5rem !important;
-    padding-top: 9rem !important;
+    padding: 10.5rem 1.5rem 1.5rem 1.5rem !important;
+  }
+
+  .userListBar {
+    flex-direction: column;
   }
 }

@@ -7,7 +7,7 @@ interface Props {
 
 export default function Header(props: Props) {
   return (
-    <div style={header}>
+    <div className="header" style={header}>
       <h2 style={title}>{props.title}</h2>
       {props.postButton ? (
         <button className="filledButton" style={postButton}>
@@ -21,8 +21,7 @@ export default function Header(props: Props) {
 const header: CSSProperties = {
   position: "fixed",
   display: "flex",
-  width: "100%",
-  top: "5rem",
+  width: "calc(100% - 16rem)",
   height: "4rem",
   padding: "0 2rem",
   flexDirection: "row",
