@@ -1,22 +1,27 @@
 import MobileHeader from "../components/MobileHeader";
-import { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
+import UserMobileMenu from "../components/UserMobileMenu";
 import UserRoutes from "./UserRoutes";
 
 export default function UserPage() {
+  const [menu, setMenuIsOpen] = useState(false);
   const user = {
     userName: "User123321",
     role: "admin",
   };
 
   return (
-    <div style={mainContainer} className="mainContainer">
-      <UserDesktopMenu user={user} />
-      <div className="contentContainer" style={contentContainer}>
-        <MobileHeader />
-        <UserRoutes />
+    <>
+      {menu && <UserMobileMenu user={user} />}
+      <div style={mainContainer} className="mainContainer">
+        <UserDesktopMenu user={user} />
+        <div className="contentContainer" style={contentContainer}>
+          <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
+          <UserRoutes />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
