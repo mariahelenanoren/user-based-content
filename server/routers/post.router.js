@@ -3,7 +3,7 @@ const PostModel = require("../models/post.model");
 const router = express.Router();
 
 /* Gets for all the posts */
-router.get("/api/post", async (req, res) => {
+router.get("/api/posts", async (req, res) => {
   const docs = await PostModel.find({});
   res.status(200).json(docs);
 });
@@ -12,6 +12,13 @@ router.get("/api/post", async (req, res) => {
 router.get("/api/post/:id", async (req, res) => {
   const { _id } = req.body;
   const docs = await PostModel.find({ _id: _id });
+  res.status(200).json(docs);
+});
+
+/* Gets current users posts */
+router.get("/api/posts/user", async (req, res) => {
+  const user = req.session.user;
+  const docs = await PostModel.find({ _user: user });
   res.status(200).json(docs);
 });
 
