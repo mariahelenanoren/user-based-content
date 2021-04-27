@@ -8,21 +8,10 @@ import { makeRequest } from "../helper";
 
 export default function LandingPage() {
   const [menu, setMenuIsOpen] = useState(false);
-
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      /* const login = {
-        userName: "test5",
-        firstName: "Maria",
-        lastName: "Norén",
-        email: "4",
-        password: "maria123",
-        role: "admin",
-      };
-      const res = await makeRequest("/api/login", "POST", login);
-      console.log(res); */
       const posts = await makeRequest("/api/posts", "GET");
       setPosts(posts);
     };

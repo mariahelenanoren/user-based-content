@@ -18,8 +18,8 @@ export default function UserPostsPage() {
     <>
       <Header title={"Dina posts"} postButton={true} />
       <div className="content" style={content}>
-        {posts.map((post) => (
-          <PostCard post={post} />
+        {posts.map((post, id) => (
+          <PostCard key={id} post={post} />
         ))}
       </div>
     </>
