@@ -13,12 +13,20 @@ export default function AdminUsersPage() {
     fetchUsers();
   }, []);
 
+  const changeUserRole = async (role: string, _id: string) => {
+    const body = { role: role, _id: _id };
+    const res = await makeRequest("/api/user/:id", "PUT", body);
+    const users = await makeRequest("/api/user", "GET");
+    setUsers(users);
+    console.log(res);
+  };
+
   return (
     <>
       <Header title={"Användare"} postButton={false} />
       <div className="content" style={content}>
         {users.map((user, id) => (
-          <UserListBar key={id} user={user} />
+          <UserListBar key={id} user={user} changeUserRole={changeUserRole} />
         ))}
       </div>
     </>

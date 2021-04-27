@@ -3,12 +3,12 @@ import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import { User } from "../interfaces";
 
-export default function UserListBar(props: User) {
-  const { user } = props;
+interface Props extends User {
+  changeUserRole: (value: string, _id: string) => void;
+}
 
-  const handleChange = (value: string) => {
-    console.log(value);
-  };
+export default function UserListBar(props: Props) {
+  const { user } = props;
 
   return (
     <div style={bar}>
@@ -25,7 +25,7 @@ export default function UserListBar(props: User) {
           id="select"
           style={select}
           value={user.role}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => props.changeUserRole(e.target.value, user._id)}
         >
           <option value="admin">Admin</option>
           <option value="user">User</option>
