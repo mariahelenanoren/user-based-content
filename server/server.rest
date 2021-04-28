@@ -2,11 +2,19 @@ GET http://localhost:5000/api/user
 
 ###
 
+GET http://localhost:5000/api/user-role
+
+###
+
+GET http://localhost:5000/api/user-status
+
+###
+
 GET http://localhost:5000/api/user/:id
 Content-Type: application/json
 
 {
-    "_id": "60816e34e7c77b55f1937757"
+    "_id": "6081712183c493590a981f42"
 }
 
 ###
