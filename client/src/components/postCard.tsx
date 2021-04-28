@@ -14,8 +14,7 @@ export default function PostCard(props: Props) {
 
   const handleClick = async () => {
     const body = { _id: post._id };
-    const res = await makeRequest("/api/post", "DELETE", body);
-    console.log(res);
+    await makeRequest("/api/post", "DELETE", body);
   };
 
   return (
