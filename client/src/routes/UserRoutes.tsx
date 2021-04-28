@@ -6,7 +6,7 @@ import LatestPostPage from "./LatestPostsPage";
 import UserPostsPage from "./UserPostsPage";
 
 export default function UserRoutes() {
-  const [authentication, setAuthentication] = useState("LOGGED_IN");
+  const [authentication, setAuthentication] = useState("admin");
 
   useEffect(() => {
     const getUserAuthentication = async () => {
