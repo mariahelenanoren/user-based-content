@@ -2,13 +2,21 @@ import { CSSProperties } from "react";
 import Delete from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { Post } from "../interfaces";
+import { makeRequest } from "../helper";
 
 interface Props extends Post {
+  isButtonsVisible: boolean;
   isEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function PostCard(props: Props) {
   const { post } = props;
+
+  const handleClick = async () => {
+    const body = { _id: post._id };
+    const res = await makeRequest("/api/post", "DELETE", body);
+    console.log(res);
+  };
 
   return (
     <>
@@ -25,15 +33,17 @@ export default function PostCard(props: Props) {
         <div className="textContainer" style={textContainer}>
           <p style={text}>{post.text}</p>
         </div>
-        <div className="flexRow iconContainer" style={iconContainer}>
-          <Delete className="icon" style={icon} />
-          <EditIcon
-            style={icon}
-            onClick={() => {
-              props.isEditModalVisible!(true);
-            }}
-          />
-        </div>
+        {props.isButtonsVisible ? (
+          <div className="flexRow iconContainer" style={iconContainer}>
+            <Delete onClick={handleClick} className="icon" style={icon} />
+            <EditIcon
+              style={icon}
+              onClick={() => {
+                props.isEditModalVisible!(true);
+              }}
+            />
+          </div>
+        ) : null}
       </div>
     </>
   );
@@ -60,7 +70,6 @@ const textContainer: CSSProperties = {
   margin: "0 1rem",
   flex: 1,
   borderLeft: "1px #4A4A4A solid",
-  borderRight: "1px #4A4A4A solid",
 };
 
 const profilePicture: CSSProperties = {
@@ -81,6 +90,8 @@ const text: CSSProperties = {
 };
 
 const iconContainer: CSSProperties = {
+  borderLeft: "1px #4A4A4A solid",
+  paddingLeft: "1rem",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",

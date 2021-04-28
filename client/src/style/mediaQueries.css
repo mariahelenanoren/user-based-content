@@ -35,9 +35,9 @@
 
   .textContainer {
     margin: 1rem 0 !important;
+    padding: 0 !important;
     border: none !important;
     border-top: 1px #4a4a4a solid !important;
-    border-bottom: 1px #4a4a4a solid !important;
   }
 
   .flexRow {
@@ -45,6 +45,10 @@
   }
 
   .iconContainer {
+    border-top: 1px #4a4a4a solid !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    padding-top: 1rem !important;
     justify-content: flex-end !important;
   }
 
