@@ -1,3 +1,7 @@
+GET http://localhost:5000/api/users
+
+###
+
 GET http://localhost:5000/api/user
 
 ###

@@ -1,15 +1,24 @@
 import MobileHeader from "../components/MobileHeader";
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
 import UserMobileMenu from "../components/UserMobileMenu";
 import UserRoutes from "./UserRoutes";
+import { makeRequest } from "../helper";
 
 export default function UserPage() {
   const [menu, setMenuIsOpen] = useState(false);
-  const user = {
-    userName: "User123321",
-    role: "admin",
-  };
+  const [user, setUser] = useState({
+    userName: "",
+    role: "",
+  });
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const users = await makeRequest("/api/user", "GET");
+      setUser(users[0]);
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>

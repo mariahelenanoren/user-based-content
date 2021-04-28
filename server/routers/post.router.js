@@ -25,11 +25,12 @@ router.get("/api/posts/user", async (req, res) => {
 /* Creates a new post, only if the user is logged in */
 router.post("/api/post", async (req, res) => {
   const { user } = req.session;
+  const { text } = req.body;
   if (!user) {
     return res.status(401).json("You must login to create a post");
   }
   const body = {
-    ...req.body,
+    text: text,
     _user: req.session.user,
     userName: req.session.userName,
   };
@@ -40,13 +41,13 @@ router.post("/api/post", async (req, res) => {
 /* Middleware which checks if the the user which calls
 the endpoint is the user stored in the post or has the 
 role of admin */
-router.use((req, res, next) => {
+/* router.use((req, res, next) => {
   const { user, role } = req.session;
   if (req._user !== user && role !== "admin") {
     return res.status(403).json("Access denied");
   }
   next();
-});
+}); */
 
 /* Updates a post */
 router.put("/api/post/:id", async (req, res) => {
