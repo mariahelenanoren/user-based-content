@@ -15,15 +15,12 @@ const LoginPage: React.FC<Props> = () => {
       console.log(status)
    }
    const handleChange = (key: string, value: string) => {
-      console.log(key, value)
       setUser(prevState => ({...prevState, [key]: value}))
-      console.log(user)
    }
-
+   
    return (
       <div style={mainStyle}>
          <div style={box}>
-            <form onSubmit={loginUser}>
                <div style={title}>Logga in på Postr</div>
                <div>
                   <input
@@ -46,13 +43,12 @@ const LoginPage: React.FC<Props> = () => {
                   />
                </div>
                <div>
-                  <button style={button} type="submit" value="submit">Logga in</button>
+                  <button style={button} onClick={loginUser}>Logga in</button>
                </div>
                <div>
                <Link to="">Har du glömt ditt lösenord? </Link>
                <Link to="/registration">Registrera dig för Postr</Link>
                </div>
-            </form>
          </div>
       </div>
    );

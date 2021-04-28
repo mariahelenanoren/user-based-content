@@ -1,16 +1,24 @@
 import { CSSProperties, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { makeRequest } from '../helper';
 
-export default function RegistrationPage() {
+interface State {
+   role: string;
+}
+
+interface Props extends RouteComponentProps<{}, {}, State>{}
+
+function RegistrationPage(props: Props) {
+   const role = props.location.state.role || "user"
    const [user, setUser] = useState({
       firstName: "",
       lastName: "",
       userName: "",
       email: "",
       password: "",
+      role: role,
    })
-   async function SaveNewUser() {
+   async function registerUser() {
       const body = user;
        const status = await makeRequest("/api/register", "POST", body)
        console.log(status)
@@ -25,7 +33,6 @@ export default function RegistrationPage() {
    return ( 
       <div style={mainStyle}>
          <div style={box}>
-            <form onSubmit={SaveNewUser}>
                <div style={title}>Logga in på Postr</div>
                <div>
                   <input
@@ -80,16 +87,17 @@ export default function RegistrationPage() {
                   />
                </div>
                <div>
-                  <button style={button} type="submit" value="submit">Registrera dig</button>
+                  <button style={button} onClick={registerUser}>Registrera dig</button>
                </div>
                <div style={linkText}>
                   <Link to="">Admin? Registrera dig här</Link>
                </div>
-            </form>
          </div>
       </div>
    );
 }
+
+export default withRouter(RegistrationPage)
 
 const mainStyle: CSSProperties = {
    display: 'flex',

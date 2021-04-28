@@ -12,15 +12,17 @@ export default function LandingDesktopMenu() {
               Logga in
             </button>
           </Link>
-          <Link to={"/registration"}>
+          <Link to={{ pathname: '/registration', state: { role: "user"}}}>
             <button className="outlinedButton" style={outlinedButton}>
               Registrera dig
             </button>
           </Link>
         </div>
+        <Link to={{pathname:'/registration', state:{role: "admin"}}} >
         <button className="textButton" style={textButton}>
           Admin? Registrera dig här
         </button>
+        </Link>
       </div>
     </div>
   );
