@@ -25,15 +25,9 @@ export default function NewPostModal(props: Props) {
     )
 }
 
-const textArea: CSSProperties = {
-    width: '100%',
-    height: '10rem',
-    border: '0, 0.3rem, 0, 0 solid black',
-    fontSize: '0.9rem',
-}
 
 const modalContainer: CSSProperties = {
-    position: 'absolute',
+    // position: 'absolute',
     height: '12rem',
     width: '100%',
     background: 'white',
@@ -42,16 +36,17 @@ const modalContainer: CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-
+    
 }
 
 const buttonContainer: CSSProperties = {
     display: 'flex',
-    width: '100%',
+    width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    marginTop: '0.5rem',
+    margin: '0.5rem',
+    borderBottom: '0.1rem solid lightgrey'
 }
 
 const modalButtons: CSSProperties = {
@@ -64,10 +59,16 @@ const modalButtons: CSSProperties = {
     margin: '0.3rem',
     width: '7rem',
     height: '2rem',
-
+    
     alignItems: 'center',
     justifyContent:'center',
-
+    
+}
+const textArea: CSSProperties = {
+    width: '90%',
+    height: '7.5rem',
+    border: 'none',
+    fontSize: '0.9rem',
 }
 
 const closeButton: CSSProperties = {
