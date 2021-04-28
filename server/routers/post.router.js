@@ -25,11 +25,12 @@ router.get("/api/posts/user", async (req, res) => {
 /* Creates a new post, only if the user is logged in */
 router.post("/api/post", async (req, res) => {
   const { user } = req.session;
+  const { text } = req.body;
   if (!user) {
     return res.status(401).json("You must login to create a post");
   }
   const body = {
-    ...req.body,
+    text: text,
     _user: req.session.user,
     userName: req.session.userName,
   };
