@@ -5,16 +5,17 @@ import RegistrationPage from "./registrationPage";
 import LoginPage from "./loginPage";
 import UserPage from "./UserPage";
 import { makeRequest } from "../helper";
+import { User } from "../interfaces";
 
 interface Props {}
 
 const Layout: React.FC<Props> = () => {
-  const [authentication, setAuthentication] = useState("LOGGED_IN");
+  const [user, setUser] = useState<User | null>();
 
   useEffect(() => {
     const getUserAuthentication = async () => {
-      const authentication = await makeRequest("/api/user-status", "GET");
-      setAuthentication(authentication);
+      const user = await makeRequest("/api/user-status", "GET");
+      setUser(user);
     };
     getUserAuthentication();
   }, []);
@@ -25,10 +26,10 @@ const Layout: React.FC<Props> = () => {
         <Route exact path="/" component={LandingPage} />
         <Route path="/registration" component={RegistrationPage} />
         <Route path="/login" component={LoginPage} />
-        {authentication === "LOGGED_IN" ? (
-          <Route path="/user" component={UserPage} />
-        ) : (
+        {user === null ? (
           <Redirect to={"/"} />
+        ) : user === undefined ? null : (
+          <Route path="/user" component={UserPage} />
         )}
       </Switch>
     </div>

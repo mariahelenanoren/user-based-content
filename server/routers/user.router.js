@@ -29,9 +29,9 @@ router.get("/api/user-role", async (req, res) => {
 /* Checks if user is logged in */
 router.get("/api/user-status", (req, res) => {
   if (req.session.user) {
-    res.status(200).json("LOGGED_IN");
+    res.status(200).json(req.session.user);
   } else {
-    res.status(401).json("NOT_LOGGED_IN");
+    res.status(401).json(null);
   }
 });
 
