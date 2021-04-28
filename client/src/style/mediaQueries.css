@@ -26,6 +26,33 @@
   }
 
   .userListBar {
-    flex-direction: column;
+    flex-direction: column !important;
+  }
+
+  .postCard {
+    flex-direction: column !important;
+  }
+
+  .textContainer {
+    margin: 1rem 0 !important;
+    border: none !important;
+    border-top: 1px #4a4a4a solid !important;
+    border-bottom: 1px #4a4a4a solid !important;
+  }
+
+  .flexRow {
+    flex-direction: row !important;
+  }
+
+  .iconContainer {
+    justify-content: flex-end !important;
+  }
+
+  .icon {
+    margin-right: 1rem;
+  }
+
+  .postCardImage {
+    margin-right: 1rem !important;
   }
 }

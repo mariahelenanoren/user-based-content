@@ -28,7 +28,11 @@ router.post("/api/post", async (req, res) => {
   if (!user) {
     return res.status(401).json("You must login to create a post");
   }
-  const body = { ...req.body, _user: req.session.user };
+  const body = {
+    ...req.body,
+    _user: req.session.user,
+    userName: req.session.userName,
+  };
   const doc = await PostModel.create(body);
   res.status(201).json("New post created");
 });
