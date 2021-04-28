@@ -1,21 +1,38 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { makeRequest } from '../helper';
 
 interface Props {}
 
 const LoginPage: React.FC<Props> = () => {
+   const [user, setUser] = useState({
+      userName: "",
+      password: "",
+   })
+   async function loginUser() {
+      const body = user;
+      const status = await makeRequest("/api/login", "POST", body)
+      console.log(status)
+   }
+   const handleChange = (key: string, value: string) => {
+      console.log(key, value)
+      setUser(prevState => ({...prevState, [key]: value}))
+      console.log(user)
+   }
+
    return (
       <div style={mainStyle}>
          <div style={box}>
-            <form>
+            <form onSubmit={loginUser}>
                <div style={title}>Logga in på Postr</div>
                <div>
                   <input
                      style={input}
-                     type="email"
-                     name="email"
-                     id="email"
-                     placeholder={'Epost eller användarnamn'}
+                     type="userName"
+                     name="userName"
+                     id="userName"
+                     placeholder={'Användarnamn'}
+                     onChange={(e) => handleChange("userName", e.target.value)}
                   />
                </div>
                <div>
@@ -25,10 +42,11 @@ const LoginPage: React.FC<Props> = () => {
                      name="password"
                      id="password"
                      placeholder={'Lösenord'}
+                     onChange={(e) => handleChange("password", e.target.value)}
                   />
                </div>
                <div>
-                  <button style={button}>Logga in</button>
+                  <button style={button} type="submit" value="submit">Logga in</button>
                </div>
                <div>
                <Link to="">Har du glömt ditt lösenord? </Link>
@@ -69,7 +87,7 @@ const title: CSSProperties = {
 };
 const input: CSSProperties = {
    background: '#1f1f1f',
-   margin: '1rem',
+   margin: '0.5rem',
    width: '18rem',
    height: '2.5rem',
    borderColor: '#656874',

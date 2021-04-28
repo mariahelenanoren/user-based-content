@@ -38,12 +38,12 @@ POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-    "userName": "test3",
-    "firstName": "Maria",
-    "lastName": "Norén",
-    "email": "2",
-    "password": "maria123",
-    "role": "admin"
+    "userName": "test6",
+    "firstName": "Förnamn",
+    "lastName": "Efternamnsson",
+    "email": "abs@gmail.com",
+    "password": "abc123",
+    "role": "user"
 }
 
 ###
