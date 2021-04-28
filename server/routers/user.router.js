@@ -1,6 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/user.model");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const router = express.Router();
 
 /* Gets all the users */
@@ -16,6 +16,25 @@ router.get("/api/user/:id", async (req, res) => {
   res.status(200).json(doc);
 });
 
+/* Checks if user has the role of admin */
+router.get("/api/user-role", async (req, res) => {
+  const role = req.session.role;
+  if (role === "admin") {
+    res.status(200).json(role);
+  } else {
+    res.status(401).json("User is not authorized");
+  }
+});
+
+/* Checks if user is logged in */
+router.get("/api/user-status", (req, res) => {
+  if (req.session.user) {
+    res.status(200).json(req.session.user);
+  } else {
+    res.status(401).json(null);
+  }
+});
+
 /* Registers a user, only if a user with that username does not already exists */
 router.post("/api/register", async (req, res) => {
   const { userName, password } = req.body;
@@ -26,7 +45,7 @@ router.post("/api/register", async (req, res) => {
     return res.status(400).json("Username is already in use");
   }
   const hashedPassword = await bcrypt.hash(password, 10);
-  const body = {...req.body, password: hashedPassword};
+  const body = { ...req.body, password: hashedPassword };
 
   const doc = await UserModel.create(body);
   res.status(201).json("Registration successful");
@@ -38,7 +57,7 @@ router.post("/api/login", async (req, res) => {
   const users = await UserModel.find({});
   const user = users.find((u) => u.userName === userName);
 
-  if (!user || !await bcrypt.compare(password, user.password)) {
+  if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(401).json("Incorrect password or username");
     return;
   }

@@ -11,11 +11,17 @@ export default function UserPostsPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchPosts = async () => {
       const posts = await makeRequest("/api/posts/user", "GET");
-      setPosts(posts);
+      if (isMounted) {
+        setPosts(posts);
+      }
     };
     fetchPosts();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
