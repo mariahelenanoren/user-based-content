@@ -5,8 +5,7 @@ import { Post } from "../interfaces";
 import { makeRequest } from "../helper";
 
 interface Props extends Post {
-  isButtonsVisible: boolean;
-  isEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
+  setIsEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function PostCard(props: Props) {
@@ -32,13 +31,13 @@ export default function PostCard(props: Props) {
         <div className="textContainer" style={textContainer}>
           <p style={text}>{post.text}</p>
         </div>
-        {props.isButtonsVisible ? (
+        {props.setIsEditModalVisible ? (
           <div className="flexRow iconContainer" style={iconContainer}>
             <Delete onClick={handleClick} className="icon" style={icon} />
             <EditIcon
               style={icon}
               onClick={() => {
-                props.isEditModalVisible!(true);
+                props.setIsEditModalVisible!(true);
               }}
             />
           </div>

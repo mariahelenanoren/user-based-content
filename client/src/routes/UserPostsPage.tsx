@@ -34,7 +34,7 @@ export default function UserPostsPage() {
         )}
 
         {posts.map((post, id) => (
-          <PostCard isButtonsVisible={true} key={id} post={post} />
+          <PostCard setIsEditModalVisible={setEditModalIsVisible} key={id} post={post} />
         ))}
       </div>
     </>
