@@ -1,57 +1,95 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { makeRequest } from '../helper';
 
-interface Props {}
+export default function RegistrationPage() {
+   const [user, setUser] = useState({
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+   })
+   async function SaveNewUser() {
+      const body = user;
+       const status = await makeRequest("/api/register", "POST", body)
+       console.log(status)
+   }
 
-const RegistrationPage: React.FC<Props> = () => {
-   return (
+   const handleChange = (key: string, value: string) => {
+      console.log(key, value)
+      setUser(prevState => ({...prevState, [key]: value}))
+      console.log(user)
+   }
+
+   return ( 
       <div style={mainStyle}>
          <div style={box}>
-            <form>
+            <form onSubmit={SaveNewUser}>
                <div style={title}>Logga in på Postr</div>
                <div>
-               <input style={input} type="firstName" name="firstName" id="firstName" placeholder={'Förnamn'}/>
-               <input style={input} type="lastName" name="lastName" id="lastName" placeholder={'Efternamn'}/>
-               <input style={input} type="userName" name="userName" id="userName" placeholder={'Användarnamn'}/>
                   <input
+                     required
+                     style={input}
+                     type="firstName"
+                     name="firstName"
+                     id="firstName"
+                     placeholder={'Förnamn'}
+                     onChange={(e) => handleChange("firstName", e.target.value)}
+                  />
+                  <input
+                     required
+                     style={input}
+                     type="lastName"
+                     name="lastName"
+                     id="lastName"
+                     placeholder={'Efternamn'}
+                     onChange={(e) => handleChange("lastName", e.target.value)}
+
+                  />
+                  <input
+                     required
+                     style={input}
+                     type="userName"
+                     name="userName"
+                     id="userName"
+                     placeholder={'Användarnamn'}
+                     onChange={(e) => handleChange("userName", e.target.value)}
+
+                  />
+                  <input
+                     required
+                     id="email"
                      style={input}
                      type="email"
                      name="email"
-                     id="email"
                      placeholder={'Epost'}
+                     onChange={(e) => handleChange("email", e.target.value)}
+
                   />
                </div>
                <div>
                   <input
+                     required
+                     id="password"
                      style={input}
                      type="password"
                      name="password"
-                     id="password"
                      placeholder={'Lösenord'}
+                     onChange={(e) => handleChange("password", e.target.value)}
                   />
                </div>
                <div>
-                  <input
-                     style={input}
-                     type="password"
-                     name="password"
-                     id="password"
-                     placeholder={'Verifiera lösenord'}
-                  />
+                  <button style={button} type="submit" value="submit">Registrera dig</button>
                </div>
-               <div>
-                  <button style={button}>Registrera dig</button>
-               </div>
-               <div>
-               <Link to="">Admin? Registrera dig här</Link>
+               <div style={linkText}>
+                  <Link to="">Admin? Registrera dig här</Link>
                </div>
             </form>
          </div>
       </div>
    );
-};
-
-export default RegistrationPage;
+}
 
 const mainStyle: CSSProperties = {
    display: 'flex',
@@ -79,11 +117,12 @@ const title: CSSProperties = {
    marginBottom: '2rem',
 };
 const input: CSSProperties = {
-   background: '#1f1f1f',
-   margin: '1rem',
+   background: '#2d2d2de6',
+   margin: '0.5rem',
    width: '18rem',
    height: '2.5rem',
    borderColor: '#656874',
+   color: '#6b6d73',
    borderWidth: 1,
 };
 const button: CSSProperties = {
@@ -94,4 +133,8 @@ const button: CSSProperties = {
    margin: '1rem',
    width: '12rem',
    height: '2.5rem',
+};
+const linkText: CSSProperties = {
+   color: '#4780EE',
+   fontSize: '0.6rem',
 };
