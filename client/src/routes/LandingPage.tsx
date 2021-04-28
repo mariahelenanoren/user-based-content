@@ -28,7 +28,7 @@ export default function LandingPage() {
           <Header title={"Senaste inläggen"} postButton={false} />
           <div className="content" style={content}>
             {posts.map((post, id) => (
-              <PostCard isButtonsVisible={false} key={id} post={post} />
+              <PostCard key={id} post={post} />
             ))}
           </div>
         </div>
