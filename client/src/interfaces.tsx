@@ -9,3 +9,11 @@ export interface User {
     _id: string;
   };
 }
+export interface Post {
+  post: {
+    text: string;
+    _id: string;
+    _user: string;
+    userName: string;
+  };
+}

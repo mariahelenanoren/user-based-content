@@ -1,23 +1,38 @@
 import { CSSProperties } from "react";
 import Delete from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Post } from "../../interfaces";
+import { Post } from "../interfaces";
 
 interface Props extends Post {
   isEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function PostCard(props: Props) {
- const { post } = props; 
+  const { post } = props;
 
   return (
     <>
-      <div style={cardStyle}>
-        <p style={userNameStyle}></p>
-        <p style={text}>{post.text}</p>
-        <div style={Icons}>
-          <Delete style={DeleteIcon} />
-           <EditIcon onClick={() => {props.isEditModalVisible!(true)}} />  
+      <div className="postCard" style={cardStyle}>
+        <div className="flexRow" style={userContainer}>
+          <img
+            className="postCardImage"
+            style={profilePicture}
+            src={"../../assets/default-user.png"}
+            alt={post.userName}
+          ></img>
+          <p style={userNameStyle}>{post.userName}</p>
+        </div>
+        <div className="textContainer" style={textContainer}>
+          <p style={text}>{post.text}</p>
+        </div>
+        <div className="flexRow iconContainer" style={iconContainer}>
+          <Delete className="icon" style={icon} />
+          <EditIcon
+            style={icon}
+            onClick={() => {
+              props.isEditModalVisible!(true);
+            }}
+          />
         </div>
       </div>
     </>
@@ -25,37 +40,52 @@ export default function PostCard(props: Props) {
 }
 
 const cardStyle: CSSProperties = {
-  height: "8rem",
   width: "100%",
-  marginTop: "1rem",
+  padding: "1rem 1.5rem",
+  marginBottom: "0.5rem",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
   backgroundColor: "#2D2D2D",
   color: "white",
 };
 
+const userContainer: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
+const textContainer: CSSProperties = {
+  padding: "0 1rem",
+  margin: "0 1rem",
+  flex: 1,
+  borderLeft: "1px #4A4A4A solid",
+  borderRight: "1px #4A4A4A solid",
+};
+
+const profilePicture: CSSProperties = {
+  height: "3rem",
+  borderRadius: "100%",
+  marginBottom: "0.5rem",
+};
+
 const userNameStyle: CSSProperties = {
-  marginTop: "1rem",
-  color: "white",
+  margin: 0,
   fontSize: "1rem",
+  fontWeight: 600,
 };
 
 const text: CSSProperties = {
-  color: "white",
   fontSize: "1rem",
-  width: "50%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  textAlign: "left",
 };
 
-const Icons: CSSProperties = {
+const iconContainer: CSSProperties = {
   display: "flex",
-  alignItems: "center",
   flexDirection: "column",
-  justifyContent: "flex-end",
-  margin: "1rem",
+  justifyContent: "space-between",
 };
 
-const DeleteIcon: CSSProperties = {};
+const icon: CSSProperties = {
+  color: "#4780EE",
+};
