@@ -1,5 +1,5 @@
 export interface Post {
-  post: {
+    post: {
     text: string;
     _id: string;
   };
