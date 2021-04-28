@@ -40,13 +40,13 @@ router.post("/api/post", async (req, res) => {
 /* Middleware which checks if the the user which calls
 the endpoint is the user stored in the post or has the 
 role of admin */
-router.use((req, res, next) => {
+/* router.use((req, res, next) => {
   const { user, role } = req.session;
   if (req._user !== user && role !== "admin") {
     return res.status(403).json("Access denied");
   }
   next();
-});
+}); */
 
 /* Updates a post */
 router.put("/api/post/:id", async (req, res) => {

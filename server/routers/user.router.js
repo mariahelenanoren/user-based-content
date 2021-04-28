@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 
 /* Gets all the users */
-router.get("/api/user", async (req, res) => {
+router.get("/api/users", async (req, res) => {
   const docs = await UserModel.find({});
   res.status(200).json(docs);
 });
@@ -12,6 +12,13 @@ router.get("/api/user", async (req, res) => {
 /* Gets a user */
 router.get("/api/user/:id", async (req, res) => {
   const { _id } = req.body;
+  const doc = await UserModel.find({ _id: _id });
+  res.status(200).json(doc);
+});
+
+/* Gets session user */
+router.get("/api/user", async (req, res) => {
+  const _id = req.session.user;
   const doc = await UserModel.find({ _id: _id });
   res.status(200).json(doc);
 });
