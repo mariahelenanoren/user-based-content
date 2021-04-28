@@ -16,7 +16,7 @@ export default function LatestPostPage() {
 
   return (
     <>
-      <Header title={"Senaste posts"} postButton={true} />
+      <Header title={"Senaste posts"} postButton={false} />
       <div className="content" style={content}>
         {posts.map((post, id) => (
           <PostCard key={id} post={post} />

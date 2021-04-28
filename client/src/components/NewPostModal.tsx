@@ -1,11 +1,11 @@
 import { CSSProperties } from "@material-ui/styles"
-import React, { useState } from "react"
 
 interface Props {
     setModalIsVisible: (value: React.SetStateAction<boolean>) => void; 
+   
 }
 
-export default function Modal(props: Props) {
+export default function NewPostModal(props: Props) {
   function handleChange(value: string) {
     console.log(value);
   }
@@ -33,8 +33,8 @@ const textArea: CSSProperties = {
 }
 
 const modalContainer: CSSProperties = {
-    postiton: 'absolute',
-    height: '13rem',
+    position: 'absolute',
+    height: '12rem',
     width: '100%',
     background: 'white',
     

@@ -3,8 +3,13 @@ import Delete from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { Post } from "../../interfaces";
 
-export default function PostCard(props: Post) {
-  const { post } = props;
+interface Props extends Post {
+  isEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
+}
+
+export default function PostCard(props: Props) {
+ const { post } = props; 
+
   return (
     <>
       <div style={cardStyle}>
@@ -12,7 +17,7 @@ export default function PostCard(props: Post) {
         <p style={text}>{post.text}</p>
         <div style={Icons}>
           <Delete style={DeleteIcon} />
-          <EditIcon />
+           <EditIcon onClick={() => {props.isEditModalVisible!(true)}} />  
         </div>
       </div>
     </>
