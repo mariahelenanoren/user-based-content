@@ -8,6 +8,10 @@
   border-color: #3169da !important;
 }
 
+.icon:hover {
+  color: #3169da !important;
+}
+
 .textButton:hover {
   text-decoration: underline !important;
 }
@@ -22,4 +26,8 @@
   background-position-x: calc(100% - 5px);
   background-position-y: 7px;
   background-size: 1.1rem;
+}
+
+button {
+  cursor: pointer;
 }

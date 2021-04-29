@@ -1,19 +1,24 @@
 import { CSSProperties } from "react";
 import Delete from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Post } from "../interfaces";
-import { makeRequest } from "../helper";
+import { Post, EditModal } from "../interfaces";
 
-interface Props extends Post {
-  setIsEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
+interface Props {
+  post: Post;
+  deletePost?: (id: string) => void;
+  setEditModal?: (value: React.SetStateAction<EditModal>) => void;
 }
 
 export default function PostCard(props: Props) {
-  const { post } = props;
+  const post = props.post;
+  const { deletePost, setEditModal } = props;
 
-  const handleClick = async () => {
-    const body = { _id: post._id };
-    await makeRequest("/api/post", "DELETE", body);
+  const handleClick = () => {
+    setEditModal!((prevState) => ({
+      ...prevState,
+      post: { ...post },
+      isVisible: true,
+    }));
   };
 
   return (
@@ -24,7 +29,7 @@ export default function PostCard(props: Props) {
             className="postCardImage"
             style={profilePicture}
             src={"../../assets/default-user.png"}
-            alt={post.userName}
+            alt={post?.userName}
           ></img>
           <p style={userNameStyle}>{post.userName}</p>
         </div>
@@ -36,10 +41,9 @@ export default function PostCard(props: Props) {
             <Delete onClick={handleClick} className="icon" style={icon} />
             <EditIcon
               style={icon}
-              onClick={() => {
-                props.setIsEditModalVisible!(true);
-              }}
+              onClick={() => deletePost(post._id)}
             />
+            <EditIcon className="icon" style={icon} onClick={handleClick} />
           </div>
         ) : null}
       </div>
@@ -99,4 +103,5 @@ const iconContainer: CSSProperties = {
 
 const icon: CSSProperties = {
   color: "#4780EE",
+  cursor: "pointer",
 };

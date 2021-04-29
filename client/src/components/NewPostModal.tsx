@@ -1,39 +1,48 @@
 import { CSSProperties } from "@material-ui/styles";
-import { useState } from "react";
-import { makeRequest } from "../helper";
+import { CreateModal } from "../interfaces";
 
 interface Props {
-  setModalIsVisible: (value: React.SetStateAction<boolean>) => void;
+  setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
 
 export default function NewPostModal(props: Props) {
-  const [text, setText] = useState("");
+  const { setCreateModal } = props;
 
-  function handleChange(value: string) {
-    setText(value);
+  function handleChange(text: string) {
+    setCreateModal((prevState) => ({
+      ...prevState,
+      text: text,
+    }));
   }
 
-  async function handleClick() {
-    const body = { text: text };
-    const res = await makeRequest("/api/post", "POST", body);
-    console.log(res);
-    props.setModalIsVisible(false);
-    window.location.reload();
+  function handleClick() {
+    setCreateModal((prevState) => ({
+      ...prevState,
+      postCreated: true,
+    }));
   }
 
   return (
     <div className="modalContainer" style={modalContainer}>
-      <div style={buttonContainer}>
-        <button
-          onClick={() => props.setModalIsVisible(false)}
-          style={closeButton}
-        >
-          Avbryt
-        </button>
-        ¨
-        <button style={modalButtons} onClick={handleClick}>
-          Posta
-        </button>
+      <div style={modalHeader}>
+        <p style={modalTitle}>Ny post</p>
+        <div style={buttonContainer}>
+          <button
+            onClick={() =>
+              setCreateModal((prevState) => ({
+                ...prevState,
+                isVisible: false,
+              }))
+            }
+            style={closeButton}
+          >
+            Avbryt
+          </button>
+          ¨
+          <button style={postButton} onClick={handleClick}>
+            Posta
+          </button>
+        </div>
       </div>
       <textarea
         placeholder={"Vad händer?"}
@@ -47,27 +56,39 @@ export default function NewPostModal(props: Props) {
 
 const modalContainer: CSSProperties = {
   position: "absolute",
+  padding: "0.5rem 1.5rem 1.5rem 1.5rem",
   height: "12rem",
   width: "calc(100% - 21rem)",
   background: "white",
-
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
 };
 
+const modalHeader: CSSProperties = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
+  borderBottom: "0.1rem solid lightgrey",
+  marginBottom: "0.5rem",
+};
+
+const modalTitle: CSSProperties = {
+  color: "#000000",
+  fontWeight: 600,
+  margin: 0,
+};
+
 const buttonContainer: CSSProperties = {
   display: "flex",
-  width: "90%",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "flex-end",
-  margin: "0.5rem",
-  borderBottom: "0.1rem solid lightgrey",
 };
 
-const modalButtons: CSSProperties = {
+const postButton: CSSProperties = {
   backgroundColor: "#4780EE",
   color: "#ffff",
   border: "none",
@@ -81,11 +102,15 @@ const modalButtons: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
 };
+
 const textArea: CSSProperties = {
-  width: "90%",
-  height: "7.5rem",
+  fontFamily: "inherit",
+  height: "100%",
+  width: "100%",
   border: "none",
+  outline: "none",
   fontSize: "0.9rem",
+  resize: "none",
 };
 
 const closeButton: CSSProperties = {
