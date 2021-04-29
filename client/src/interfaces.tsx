@@ -10,10 +10,20 @@ export interface User {
   };
 }
 export interface Post {
-  post: {
-    text: string;
-    _id: string;
-    _user: string;
-    userName: string;
-  };
+  text: string;
+  _id: string;
+  _user: string;
+  userName: string;
+}
+
+export interface EditModal {
+  isVisible: boolean;
+  post: Post;
+  postUpdated: boolean;
+}
+
+export interface CreateModal {
+  isVisible: boolean;
+  text: string;
+  postCreated: boolean;
 }
