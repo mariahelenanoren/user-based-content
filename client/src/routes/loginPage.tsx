@@ -64,12 +64,13 @@ const mainStyle: CSSProperties = {
    justifyContent: 'center',
    alignItems: 'center',
    textAlign: 'center',
-   backgroundColor: '#1f1f1f',
+   backgroundColor: '#111111',
+   
 };
 const box: CSSProperties = {
    display: 'flex',
    flexDirection: 'column',
-   background: '#1f1f1f',
+   backgroundColor: '#111111',
    width: '100%em',
    height: '25rem',
    justifyContent: 'center',
@@ -83,7 +84,7 @@ const title: CSSProperties = {
    fontWeight: 500,
 };
 const input: CSSProperties = {
-   background: '#1f1f1f',
+   background: '#000000',
    margin: '0.5rem',
    width: '18rem',
    height: '2.5rem',
@@ -101,6 +102,7 @@ const button: CSSProperties = {
    width: '9rem',
    height: '2rem',
    cursor: 'pointer',
+   marginTop: '1rem',
 
 };
 

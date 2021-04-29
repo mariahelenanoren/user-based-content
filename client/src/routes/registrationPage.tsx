@@ -31,7 +31,7 @@ function RegistrationPage(props: Props) {
   return (
     <div style={mainStyle}>
       <div style={box}>
-        <div style={title}>Logga in på Postr</div>
+        <div style={title}>Skapa ett Postr konto</div>
         <div>
           <input
             required
@@ -97,49 +97,61 @@ function RegistrationPage(props: Props) {
 export default withRouter(RegistrationPage);
 
 const mainStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  width: "100%",
-  height: "100vh",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-  backgroundColor: "#1f1f1f",
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  backgroundColor: '#111111',
+
 };
 const box: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  background: "#1f1f1f",
-  width: "25rem",
-  height: "25rem",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%em',
+  height: '25rem',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  backgroundColor: '#111111',
+ 
 };
 const title: CSSProperties = {
    color: '#d3dde4',
    fontSize: '2.5rem',
    marginBottom: '2rem',
+   fontWeight: 500,
 };
 const input: CSSProperties = {
-  background: "#2d2d2de6",
-  margin: "0.5rem",
-  width: "18rem",
-  height: "2.5rem",
-  borderColor: "#656874",
-  color: "#6b6d73",
+  background: '#000000',
+  margin: '0.5rem',
+  width: '18rem',
+  height: '2.5rem',
+  borderColor: '#656874',
+  color: '#6b6d73',
   borderWidth: 1,
+  display: 'flex',
+  flexDirection: 'column',
 };
 const button: CSSProperties = {
-   background: '#2554c1',
-   borderRadius: 6,
-   color: '#d3dde4',
-   fontSize: '1.1rem',
-   margin: '1rem',
-   width: '12rem',
-   height: '2rem',
+  backgroundColor: '#4780EE',
+  color: '#ffff',
+  border: "none",
+  borderRadius: "0.5rem",
+  fontSize: "0.9rem",
+  fontWeight: 600,
+  margin: '0.3rem',
+  width: '10rem',
+  height: '2rem',
+  cursor: 'pointer',
+  marginTop: '1rem',
+
 };
 const linkText: CSSProperties = {
-  color: "#4780EE",
-  fontSize: "0.6rem",
+  color: '#4780EE',
+  fontSize: '0.7rem',
+  display: 'flex',
+  flexDirection: 'column',
 };
