@@ -10,10 +10,8 @@ export interface User {
   };
 }
 export interface Post {
-  post: {
-    text: string;
-    _id: string;
-    _user: string;
-    userName: string;
-  };
+  text: string;
+  _id: string;
+  _user: string;
+  userName: string;
 }

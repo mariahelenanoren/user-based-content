@@ -4,16 +4,24 @@ import EditIcon from "@material-ui/icons/Edit";
 import { Post } from "../interfaces";
 import { makeRequest } from "../helper";
 
-interface Props extends Post {
+interface Props {
   setIsEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
+  setEditPost?: (post: React.SetStateAction<Post>) => void;
+  post: Post;
 }
 
 export default function PostCard(props: Props) {
-  const { post } = props;
+  const post = props.post;
 
-  const handleClick = async () => {
+  const handleDelete = async () => {
     const body = { _id: post._id };
-    await makeRequest("/api/post", "DELETE", body);
+    const res = await makeRequest("/api/post/:id", "DELETE", body);
+    console.log(res);
+  };
+
+  const handleEdit = () => {
+    props.setIsEditModalVisible!(true);
+    props.setEditPost!(post);
   };
 
   return (
@@ -24,22 +32,21 @@ export default function PostCard(props: Props) {
             className="postCardImage"
             style={profilePicture}
             src={"../../assets/default-user.png"}
-            alt={post.userName}
+            alt={post?.userName}
           ></img>
           <p style={userNameStyle}>{post.userName}</p>
         </div>
         <div className="textContainer" style={textContainer}>
           <p style={text}>{post.text}</p>
         </div>
-        {props.setIsEditModalVisible ? (
+        {props.setIsEditModalVisible && props.setEditPost ? (
           <div className="flexRow iconContainer" style={iconContainer}>
-            <Delete onClick={handleClick} className="icon" style={icon} />
-            <EditIcon
+            <Delete
+              className="deleteIcon icon"
               style={icon}
-              onClick={() => {
-                props.setIsEditModalVisible!(true);
-              }}
+              onClick={handleDelete}
             />
+            <EditIcon className="icon" style={icon} onClick={handleEdit} />
           </div>
         ) : null}
       </div>
@@ -97,4 +104,5 @@ const iconContainer: CSSProperties = {
 
 const icon: CSSProperties = {
   color: "#4780EE",
+  cursor: "pointer",
 };

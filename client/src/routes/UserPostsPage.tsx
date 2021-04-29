@@ -4,10 +4,17 @@ import PostCard from "../components/postCard";
 import { makeRequest } from "../helper";
 import NewPostModal from "../components/NewPostModal";
 import EditPostModal from "../components/EditPostModal";
+import { Post } from "../interfaces";
 
 export default function UserPostsPage() {
-  const [isModalVisible, setNewModalIsVisible] = useState(false);
+  const [isNewModalVisible, setNewModalIsVisible] = useState(false);
   const [isEditModalVisible, setEditModalIsVisible] = useState(false);
+  const [editPost, setEditPost] = useState<Post>({
+    userName: "",
+    text: "",
+    _id: "",
+    _user: "",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -22,7 +29,7 @@ export default function UserPostsPage() {
     return () => {
       isMounted = false;
     };
-  }, [setNewModalIsVisible]);
+  }, [isEditModalVisible, isNewModalVisible]);
 
   return (
     <>
@@ -32,16 +39,19 @@ export default function UserPostsPage() {
         postButton={true}
       />
       <div className="content" style={content}>
-        {isModalVisible && (
+        {isNewModalVisible && (
           <NewPostModal setNewModalIsVisible={setNewModalIsVisible} />
         )}
         {isEditModalVisible && (
-          <EditPostModal setEditModalIsVisible={setEditModalIsVisible} />
+          <EditPostModal
+            post={editPost}
+            setEditModalIsVisible={setEditModalIsVisible}
+          />
         )}
-
-        {posts.map((post, id) => (
+        {posts.map((post: Post, id) => (
           <PostCard
             setIsEditModalVisible={setEditModalIsVisible}
+            setEditPost={setEditPost}
             key={id}
             post={post}
           />
