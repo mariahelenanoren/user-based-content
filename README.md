@@ -1,5 +1,5 @@
 # Postr
-Is a userbased platform to post to the world whats on your mind. 
+Is a userbased platform to post to the world whats on your mind. Built with MERN stack (MongoDB, Express, React and Node con Typescript). 
 Register a user to log in and create posts, edit or delete them. Users can have two different roles, member or admin. You can perform CRUD operations on your own posts as a member. The admin role can access all posts and users, as well as perform CRUD operations on them.
 ## Developer instructions
 
