@@ -6,14 +6,6 @@ GET http://localhost:5000/api/user
 
 ###
 
-GET http://localhost:5000/api/user-role
-
-###
-
-GET http://localhost:5000/api/user-status
-
-###
-
 GET http://localhost:5000/api/user/:id
 Content-Type: application/json
 

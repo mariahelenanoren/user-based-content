@@ -3,7 +3,8 @@ import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import { User } from "../interfaces";
 
-interface Props extends User {
+interface Props {
+  user: User;
   changeUserRole: (value: string, _id: string) => void;
 }
 

@@ -2,9 +2,15 @@ import React, { CSSProperties, useEffect, useState } from "react";
 import Header from "../components/Header";
 import PostCard from "../components/postCard";
 import { makeRequest } from "../helper";
+import { User } from "../interfaces";
 
-export default function LatestPostPage() {
+interface Props {
+  user: User;
+}
+
+export default function LatestPostPage(props: Props) {
   const [posts, setPosts] = useState([]);
+  const { user } = props;
 
   useEffect(() => {
     const fetchPosts = async () => {

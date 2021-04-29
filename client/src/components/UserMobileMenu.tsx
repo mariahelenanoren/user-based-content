@@ -1,12 +1,10 @@
 import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import { Link } from "react-router-dom";
+import { User } from "../interfaces";
 
 interface Props {
-  user: {
-    userName: string;
-    role: string;
-  };
+  user?: User;
   setMenuIsOpen: (value: React.SetStateAction<boolean>) => void;
 }
 
@@ -21,14 +19,14 @@ export default function UserMobileMenu(props: Props) {
     <div style={menu}>
       <div style={userContainer}>
         <div style={profilePictureContainer}>
-          {user.role === "admin" ? <div style={adminBadge}>admin</div> : null}
+          {user?.role === "admin" ? <div style={adminBadge}>admin</div> : null}
           <img
             style={profilePicture}
-            alt={user.userName}
+            alt={user?.userName}
             src="../../assets/default-user.png"
           ></img>
         </div>
-        <h3>{user.userName}</h3>
+        <h3>{user?.userName}</h3>
       </div>
       <nav style={nav}>
         <ul style={navList}>
@@ -42,7 +40,7 @@ export default function UserMobileMenu(props: Props) {
               Senaste posts
             </li>
           </Link>
-          {user.role === "admin" ? (
+          {user?.role === "admin" ? (
             <Link to="/user/users" onClick={handleClick}>
               <li className="navItem" style={navItem}>
                 Användare
