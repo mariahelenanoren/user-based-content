@@ -15,3 +15,15 @@ export interface Post {
   _user: string;
   userName: string;
 }
+
+export interface EditModal {
+  isVisible: boolean;
+  post: Post;
+  postUpdated: boolean;
+}
+
+export interface CreateModal {
+  isVisible: boolean;
+  text: string;
+  postCreated: boolean;
+}

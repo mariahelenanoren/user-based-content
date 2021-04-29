@@ -1,27 +1,24 @@
 import { CSSProperties } from "react";
 import Delete from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Post } from "../interfaces";
-import { makeRequest } from "../helper";
+import { Post, EditModal } from "../interfaces";
 
 interface Props {
-  setIsEditModalVisible?: (value: React.SetStateAction<boolean>) => void;
-  setEditPost?: (post: React.SetStateAction<Post>) => void;
   post: Post;
+  deletePost?: (id: string) => void;
+  setEditModal?: (value: React.SetStateAction<EditModal>) => void;
 }
 
 export default function PostCard(props: Props) {
   const post = props.post;
+  const { deletePost, setEditModal } = props;
 
-  const handleDelete = async () => {
-    const body = { _id: post._id };
-    const res = await makeRequest("/api/post/:id", "DELETE", body);
-    console.log(res);
-  };
-
-  const handleEdit = () => {
-    props.setIsEditModalVisible!(true);
-    props.setEditPost!(post);
+  const handleClick = () => {
+    setEditModal!((prevState) => ({
+      ...prevState,
+      post: { ...post },
+      isVisible: true,
+    }));
   };
 
   return (
@@ -39,14 +36,14 @@ export default function PostCard(props: Props) {
         <div className="textContainer" style={textContainer}>
           <p style={text}>{post.text}</p>
         </div>
-        {props.setIsEditModalVisible && props.setEditPost ? (
+        {deletePost && setEditModal ? (
           <div className="flexRow iconContainer" style={iconContainer}>
             <Delete
               className="deleteIcon icon"
               style={icon}
-              onClick={handleDelete}
+              onClick={() => deletePost(post._id)}
             />
-            <EditIcon className="icon" style={icon} onClick={handleEdit} />
+            <EditIcon className="icon" style={icon} onClick={handleClick} />
           </div>
         ) : null}
       </div>

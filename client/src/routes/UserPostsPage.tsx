@@ -7,53 +7,105 @@ import EditPostModal from "../components/EditPostModal";
 import { Post } from "../interfaces";
 
 export default function UserPostsPage() {
-  const [isNewModalVisible, setNewModalIsVisible] = useState(false);
-  const [isEditModalVisible, setEditModalIsVisible] = useState(false);
-  const [editPost, setEditPost] = useState<Post>({
-    userName: "",
-    text: "",
-    _id: "",
-    _user: "",
-  });
   const [posts, setPosts] = useState([]);
+  const [createModal, setCreateModal] = useState({
+    isVisible: false,
+    text: "",
+    postCreated: false,
+  });
+
+  const [editModal, setEditModal] = useState({
+    isVisible: false,
+    post: {
+      userName: "",
+      _id: "",
+      _user: "",
+      text: "",
+    },
+    postUpdated: false,
+  });
 
   useEffect(() => {
     let isMounted = true;
     const fetchPosts = async () => {
-      const posts = await makeRequest("/api/posts/user", "GET");
       if (isMounted) {
-        setPosts(posts);
+        updatePosts();
       }
     };
     fetchPosts();
     return () => {
       isMounted = false;
     };
-  }, [isEditModalVisible, isNewModalVisible]);
+  }, []);
+
+  const updatePosts = async () => {
+    const posts = await makeRequest("/api/posts/user", "GET");
+    setPosts(posts);
+  };
+
+  useEffect(() => {
+    if (editModal.postUpdated === true) {
+      const body = { ...editModal.post };
+      console.log(body);
+      const editPost = async () => {
+        const res = await makeRequest("/api/post/:id", "PUT", body);
+        console.log(res);
+        updatePosts();
+        setEditModal({
+          isVisible: false,
+          post: {
+            userName: "",
+            _id: "",
+            _user: "",
+            text: "",
+          },
+          postUpdated: false,
+        });
+      };
+      editPost();
+    }
+  }, [editModal.postUpdated, editModal.post]);
+
+  useEffect(() => {
+    if (createModal.postCreated === true) {
+      const body = { text: createModal.text };
+      const editPost = async () => {
+        const res = await makeRequest("/api/post", "POST", body);
+        console.log(res);
+        updatePosts();
+        setCreateModal({
+          isVisible: false,
+          text: "",
+          postCreated: false,
+        });
+      };
+      editPost();
+    }
+  }, [createModal.postCreated, createModal.text]);
+
+  const deletePost = async (id: string) => {
+    const body = { _id: id };
+    const res = await makeRequest("/api/post/:id", "DELETE", body);
+    console.log(res);
+    updatePosts();
+  };
 
   return (
     <>
-      <Header
-        title={"Dina posts"}
-        setNewModalIsVisible={setNewModalIsVisible}
-        postButton={true}
-      />
+      <Header title={"Dina posts"} setCreateModal={setCreateModal} />
       <div className="content" style={content}>
-        {isNewModalVisible && (
-          <NewPostModal setNewModalIsVisible={setNewModalIsVisible} />
+        {createModal.isVisible && (
+          <NewPostModal setCreateModal={setCreateModal} />
         )}
-        {isEditModalVisible && (
-          <EditPostModal
-            post={editPost}
-            setEditModalIsVisible={setEditModalIsVisible}
-          />
+        {editModal.isVisible && (
+          <EditPostModal editModal={editModal} setEditModal={setEditModal} />
         )}
         {posts.map((post: Post, id) => (
           <PostCard
-            setIsEditModalVisible={setEditModalIsVisible}
-            setEditPost={setEditPost}
             key={id}
             post={post}
+            deletePost={deletePost}
+            setEditModal={setEditModal}
           />
         ))}
       </div>

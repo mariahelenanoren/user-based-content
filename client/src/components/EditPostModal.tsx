@@ -1,25 +1,27 @@
-import { CSSProperties, useState } from "react";
-import { makeRequest } from "../helper";
-import { Post } from "../interfaces";
+import { CSSProperties } from "react";
+import { EditModal } from "../interfaces";
 
 interface Props {
-  setEditModalIsVisible: (value: React.SetStateAction<boolean>) => void;
-  post: Post;
+  editModal: EditModal;
+  setEditModal: (value: React.SetStateAction<EditModal>) => void;
 }
-export default function EditPostModal(props: Props) {
-  const post = props.post;
-  const [text, setText] = useState(post.text);
 
-  const handleChange = (value: string) => {
-    setText(value);
-    console.log(value);
+export default function EditPostModal(props: Props) {
+  const post = props.editModal.post;
+  const { setEditModal } = props;
+
+  const handleChange = (text: string) => {
+    setEditModal((prevState) => ({
+      ...prevState,
+      post: { ...post, text: text },
+    }));
   };
 
-  const handleClick = async () => {
-    const body = { ...post, text: text };
-    const res = await makeRequest("/api/post/:id", "PUT", body);
-    props.setEditModalIsVisible(false);
-    console.log(res);
+  const handleClick = () => {
+    setEditModal((prevState) => ({
+      ...prevState,
+      postUpdated: true,
+    }));
   };
 
   return (
@@ -28,7 +30,9 @@ export default function EditPostModal(props: Props) {
         <p style={modalTitle}>Ändra post</p>
         <div style={buttonContainer}>
           <button
-            onClick={() => props.setEditModalIsVisible(false)}
+            onClick={() =>
+              setEditModal((prevState) => ({ ...prevState, isVisible: false }))
+            }
             style={closeButton}
           >
             Avbryt
@@ -41,7 +45,7 @@ export default function EditPostModal(props: Props) {
       </div>
       <textarea
         placeholder={"Vad händer?"}
-        value={text}
+        value={post.text}
         style={textArea}
         rows={5}
         onChange={(event) => handleChange(event.target.value)}

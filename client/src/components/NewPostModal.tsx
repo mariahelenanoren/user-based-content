@@ -1,23 +1,25 @@
 import { CSSProperties } from "@material-ui/styles";
-import { useState } from "react";
-import { makeRequest } from "../helper";
+import { CreateModal } from "../interfaces";
 
 interface Props {
-  setNewModalIsVisible: (value: React.SetStateAction<boolean>) => void;
+  setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
 
 export default function NewPostModal(props: Props) {
-  const [text, setText] = useState("");
+  const { setCreateModal } = props;
 
-  function handleChange(value: string) {
-    setText(value);
+  function handleChange(text: string) {
+    setCreateModal((prevState) => ({
+      ...prevState,
+      text: text,
+    }));
   }
 
-  async function handleClick() {
-    const body = { text: text };
-    const res = await makeRequest("/api/post", "POST", body);
-    props.setNewModalIsVisible(false);
-    console.log(res);
+  function handleClick() {
+    setCreateModal((prevState) => ({
+      ...prevState,
+      postCreated: true,
+    }));
   }
 
   return (
@@ -26,7 +28,12 @@ export default function NewPostModal(props: Props) {
         <p style={modalTitle}>Ny post</p>
         <div style={buttonContainer}>
           <button
-            onClick={() => props.setNewModalIsVisible(false)}
+            onClick={() =>
+              setCreateModal((prevState) => ({
+                ...prevState,
+                isVisible: false,
+              }))
+            }
             style={closeButton}
           >
             Avbryt

@@ -25,7 +25,7 @@ export default function LandingPage() {
         <LandingDesktopMenu />
         <div className="contentContainer" style={contentContainer}>
           <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
-          <Header title={"Senaste inläggen"} postButton={false} />
+          <Header title={"Senaste inläggen"} />
           <div className="content" style={content}>
             {posts.map((post, id) => (
               <PostCard key={id} post={post} />
