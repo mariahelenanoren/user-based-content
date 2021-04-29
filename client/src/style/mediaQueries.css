@@ -59,4 +59,8 @@
   .postCardImage {
     margin-right: 1rem !important;
   }
+
+  .modalContainer {
+    width: calc(100% - 3rem) !important;
+  }
 }
