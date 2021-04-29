@@ -1,5 +1,4 @@
 import { CSSProperties } from "@material-ui/styles";
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function LandingMobileMenu() {

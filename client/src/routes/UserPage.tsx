@@ -1,5 +1,5 @@
 import MobileHeader from "../components/MobileHeader";
-import React, { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
 import UserMobileMenu from "../components/UserMobileMenu";
 import UserRoutes from "./UserRoutes";
