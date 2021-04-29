@@ -1,7 +1,6 @@
-import { CSSProperties, useState } from "react";
-import { Link, RouteComponentProps, withRouter } from "react-router-dom";
-import { makeRequest } from "../helper";
-
+import { CSSProperties, useState } from 'react';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { makeRequest } from '../helper';
 interface State {
   role: string;
 }
@@ -23,7 +22,6 @@ function RegistrationPage(props: Props) {
     const status = await makeRequest("/api/register", "POST", body);
     console.log(status);
   }
-
   const handleChange = (key: string, value: string) => {
     console.log(key, value);
     setUser((prevState) => ({ ...prevState, [key]: value }));
@@ -119,9 +117,9 @@ const box: CSSProperties = {
   textAlign: "center",
 };
 const title: CSSProperties = {
-  color: "#d3dde4",
-  fontSize: "3rem",
-  marginBottom: "2rem",
+   color: '#d3dde4',
+   fontSize: '2.5rem',
+   marginBottom: '2rem',
 };
 const input: CSSProperties = {
   background: "#2d2d2de6",
@@ -133,13 +131,13 @@ const input: CSSProperties = {
   borderWidth: 1,
 };
 const button: CSSProperties = {
-  background: "#2554c1",
-  borderRadius: 6,
-  color: "#d3dde4",
-  fontSize: "1.1rem",
-  margin: "1rem",
-  width: "12rem",
-  height: "2.5rem",
+   background: '#2554c1',
+   borderRadius: 6,
+   color: '#d3dde4',
+   fontSize: '1.1rem',
+   margin: '1rem',
+   width: '12rem',
+   height: '2rem',
 };
 const linkText: CSSProperties = {
   color: "#4780EE",

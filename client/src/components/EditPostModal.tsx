@@ -1,6 +1,5 @@
 import { CSSProperties } from "react";
 
-
 interface Props {
     setEditModalIsVisible: (value: React.SetStateAction<boolean>) => void; 
 }
@@ -20,7 +19,6 @@ export default function EditPostModal(props: Props) {
             onChange={(event) => handleChange(event.target.value)}>
              </textarea> 
             </div> 
-            
         )
     }
 
@@ -29,14 +27,11 @@ export default function EditPostModal(props: Props) {
         height: '12rem',
         width: '100%',
         background: 'white',
-        
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        
     }
-    
     const buttonContainer: CSSProperties = {
         display: 'flex',
         width: '90%',
@@ -46,7 +41,6 @@ export default function EditPostModal(props: Props) {
         margin: '0.5rem',
         borderBottom: '0.1rem solid lightgrey'
     }
-    
     const modalButtons: CSSProperties = {
         backgroundColor: '#4780EE',
         color: '#ffff',
@@ -57,10 +51,8 @@ export default function EditPostModal(props: Props) {
         margin: '0.3rem',
         width: '7rem',
         height: '2rem',
-        
         alignItems: 'center',
         justifyContent:'center',
-        
     }
     const textArea: CSSProperties = {
         width: '90%',
