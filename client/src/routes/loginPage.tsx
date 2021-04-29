@@ -45,7 +45,7 @@ const LoginPage: React.FC<Props> = () => {
                <div>
                   <button style={button} onClick={loginUser}>Logga in</button>
                </div>
-               <div>
+               <div style={linkStyles}>
                <Link to="">Har du glömt ditt lösenord? </Link>
                <Link to="/registration">Registrera dig för Postr</Link>
                </div>
@@ -60,7 +60,7 @@ const mainStyle: CSSProperties = {
    display: 'flex',
    flexDirection: 'column',
    width: '100%',
-   height: '100vh',
+   height: '100%',
    justifyContent: 'center',
    alignItems: 'center',
    textAlign: 'center',
@@ -70,7 +70,7 @@ const box: CSSProperties = {
    display: 'flex',
    flexDirection: 'column',
    background: '#1f1f1f',
-   width: '25rem',
+   width: '100%em',
    height: '25rem',
    justifyContent: 'center',
    alignItems: 'center',
@@ -78,8 +78,9 @@ const box: CSSProperties = {
 };
 const title: CSSProperties = {
    color: '#d3dde4',
-   fontSize: '3rem',
+   fontSize: '2.5rem',
    marginBottom: '2rem',
+   fontWeight: 500,
 };
 const input: CSSProperties = {
    background: '#1f1f1f',
@@ -90,12 +91,24 @@ const input: CSSProperties = {
    borderWidth: 1,
 };
 const button: CSSProperties = {
-   background: '#2554c1',
-   borderRadius: 6,
-   color: '#d3dde4',
-   fontSize: '1.3rem',
-   fontStretch: 'expanded',
-   margin: '1rem',
-   width: '12rem',
-   height: '2.5rem',
+   backgroundColor: '#4780EE',
+   color: '#ffff',
+   border: "none",
+   borderRadius: "0.5rem",
+   fontSize: "0.9rem",
+   fontWeight: 600,
+   margin: '0.3rem',
+   width: '9rem',
+   height: '2rem',
+   cursor: 'pointer',
+
 };
+
+const linkStyles: CSSProperties = {
+   display: 'flex',
+   flexDirection: 'column',
+   textDecoration: 'underline',
+   color:  '#4780EE',
+   marginTop: '0.5rem',
+}
+
