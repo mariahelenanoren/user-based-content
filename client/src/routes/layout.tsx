@@ -15,7 +15,11 @@ const Layout: React.FC<Props> = () => {
   useEffect(() => {
     const getUserAuthentication = async () => {
       const user = await makeRequest("/api/user", "GET");
-      setUser(user[0]);
+      if (user) {
+        setUser(user[0]);
+      } else {
+        setUser(user);
+      }
     };
     getUserAuthentication();
   }, []);

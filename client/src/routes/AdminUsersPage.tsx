@@ -6,19 +6,25 @@ import { makeRequest } from "../helper";
 export default function AdminUsersPage() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await makeRequest("/api/users", "GET");
-      setUsers(users);
-    };
-    fetchUsers();
+    updateUsers();
   }, []);
 
-  const changeUserRole = async (role: string, _id: string) => {
-    const body = { role: role, _id: _id };
-    const res = await makeRequest("/api/user/:id", "PUT", body);
+  const updateUsers = async () => {
     const users = await makeRequest("/api/users", "GET");
     setUsers(users);
+  };
+
+  const changeUserRole = async (role: string, id: string) => {
+    const body = { role: role, _id: id };
+    const res = await makeRequest("/api/user/:id", "PUT", body);
+    updateUsers();
     console.log(res);
+  };
+
+  const deleteUser = async (id: string) => {
+    const body = { _id: id };
+    const res = await makeRequest("/api/user/:id", "DELETE", body);
+    updateUsers();
   };
 
   return (
@@ -26,7 +32,12 @@ export default function AdminUsersPage() {
       <Header title={"Användare"} />
       <div className="content" style={content}>
         {users.map((user, id) => (
-          <UserListBar key={id} user={user} changeUserRole={changeUserRole} />
+          <UserListBar
+            key={id}
+            user={user}
+            deleteUser={deleteUser}
+            changeUserRole={changeUserRole}
+          />
         ))}
       </div>
     </>

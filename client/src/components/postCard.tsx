@@ -38,7 +38,7 @@ export default function PostCard(props: Props) {
         </div>
         {setEditModal && deletePost ? (
           <div className="iconContainer" style={iconContainer}>
-            <Delete onClick={handleClick} className="icon" style={icon} />
+            <Delete style={icon} onClick={() => deletePost(post._id)} />
             <EditIcon className="icon" style={icon} onClick={handleClick} />
           </div>
         ) : null}
