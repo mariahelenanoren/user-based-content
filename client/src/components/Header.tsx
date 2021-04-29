@@ -6,7 +6,6 @@ interface Props {
   setModalIsVisible?: (value: React.SetStateAction<boolean>) => void;
 }
 
-
 export default function Header(props: Props) {
   return (
     <div className="header" style={header}>

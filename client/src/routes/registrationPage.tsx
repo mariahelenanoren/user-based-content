@@ -1,7 +1,6 @@
 import { CSSProperties, useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { makeRequest } from '../helper';
-
 interface State {
    role: string;
 }
@@ -27,13 +26,13 @@ function RegistrationPage(props: Props) {
    const handleChange = (key: string, value: string) => {
       console.log(key, value)
       setUser(prevState => ({...prevState, [key]: value}))
-      console.log(user)
    }
+   console.log(user)
 
    return ( 
       <div style={mainStyle}>
          <div style={box}>
-               <div style={title}>Logga in på Postr</div>
+               <div style={title}>Registrera dig för Postr</div>
                <div>
                   <input
                      required
@@ -90,7 +89,7 @@ function RegistrationPage(props: Props) {
                   <button style={button} onClick={registerUser}>Registrera dig</button>
                </div>
                <div style={linkText}>
-                  <Link to="">Admin? Registrera dig här</Link>
+                  <Link to="/adminUserPage">Admin? Registrera dig här</Link>
                </div>
          </div>
       </div>
@@ -121,7 +120,7 @@ const box: CSSProperties = {
 };
 const title: CSSProperties = {
    color: '#d3dde4',
-   fontSize: '3rem',
+   fontSize: '2.5rem',
    marginBottom: '2rem',
 };
 const input: CSSProperties = {
@@ -140,7 +139,7 @@ const button: CSSProperties = {
    fontSize: '1.1rem',
    margin: '1rem',
    width: '12rem',
-   height: '2.5rem',
+   height: '2rem',
 };
 const linkText: CSSProperties = {
    color: '#4780EE',
