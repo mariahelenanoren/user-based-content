@@ -36,13 +36,10 @@ export default function PostCard(props: Props) {
         <div className="textContainer" style={textContainer}>
           <p style={text}>{post.text}</p>
         </div>
-        {props.setIsEditModalVisible ? (
+        {setEditModal && deletePost ? (
           <div className="iconContainer" style={iconContainer}>
             <Delete onClick={handleClick} className="icon" style={icon} />
-            <EditIcon
-              style={icon}
-              onClick={() => deletePost(post._id)}
-            />
+            <EditIcon style={icon} onClick={() => deletePost(post._id)} />
             <EditIcon className="icon" style={icon} onClick={handleClick} />
           </div>
         ) : null}
