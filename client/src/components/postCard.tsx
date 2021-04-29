@@ -19,7 +19,7 @@ export default function PostCard(props: Props) {
   return (
     <>
       <div className="postCard" style={cardStyle}>
-        <div className="flexRow" style={userContainer}>
+        <div className="userContainer" style={userContainer}>
           <img
             className="postCardImage"
             style={profilePicture}
@@ -32,7 +32,7 @@ export default function PostCard(props: Props) {
           <p style={text}>{post.text}</p>
         </div>
         {props.setIsEditModalVisible ? (
-          <div className="flexRow iconContainer" style={iconContainer}>
+          <div className="iconContainer" style={iconContainer}>
             <Delete onClick={handleClick} className="icon" style={icon} />
             <EditIcon
               style={icon}
@@ -58,6 +58,7 @@ const cardStyle: CSSProperties = {
 };
 
 const userContainer: CSSProperties = {
+  width: "8rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -78,7 +79,8 @@ const profilePicture: CSSProperties = {
 
 const userNameStyle: CSSProperties = {
   margin: 0,
-  fontSize: "1rem",
+  fontSize: "0.9rem",
+  wordBreak: "break-word",
   fontWeight: 600,
 };
 
