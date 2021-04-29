@@ -40,11 +40,13 @@
     border-top: 1px #4a4a4a solid !important;
   }
 
-  .flexRow {
+  .userContainer {
     flex-direction: row !important;
+    width: 100% !important;
   }
 
   .iconContainer {
+    flex-direction: row !important;
     border-top: 1px #4a4a4a solid !important;
     border-left: none !important;
     padding-left: 0 !important;
