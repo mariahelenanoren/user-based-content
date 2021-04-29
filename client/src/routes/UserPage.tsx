@@ -1,24 +1,17 @@
 import MobileHeader from "../components/MobileHeader";
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useState } from "react";
 import UserDesktopMenu from "../components/UserDesktopMenu";
 import UserMobileMenu from "../components/UserMobileMenu";
 import UserRoutes from "./UserRoutes";
-import { makeRequest } from "../helper";
+import { User } from "../interfaces";
 
-export default function UserPage() {
+interface Props {
+  user: User;
+}
+
+export default function UserPage(props: Props) {
+  const { user } = props;
   const [menu, setMenuIsOpen] = useState(false);
-  const [user, setUser] = useState({
-    userName: "",
-    role: "",
-  });
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const users = await makeRequest("/api/user", "GET");
-      setUser(users[0]);
-    };
-    fetchUser();
-  }, []);
 
   return (
     <>
@@ -27,7 +20,7 @@ export default function UserPage() {
         <UserDesktopMenu user={user} />
         <div className="contentContainer" style={contentContainer}>
           <MobileHeader menu={menu} setMenuIsOpen={setMenuIsOpen} />
-          <UserRoutes />
+          <UserRoutes user={user} />
         </div>
       </div>
     </>

@@ -19,24 +19,9 @@ router.get("/api/user/:id", async (req, res) => {
 /* Gets session user */
 router.get("/api/user", async (req, res) => {
   const _id = req.session.user;
-  const doc = await UserModel.find({ _id: _id });
-  res.status(200).json(doc);
-});
-
-/* Checks if user has the role of admin */
-router.get("/api/user-role", async (req, res) => {
-  const role = req.session.role;
-  if (role === "admin") {
-    res.status(200).json(role);
-  } else {
-    res.status(401).json("User is not authorized");
-  }
-});
-
-/* Checks if user is logged in */
-router.get("/api/user-status", (req, res) => {
-  if (req.session.user) {
-    res.status(200).json(req.session.user);
+  if (_id) {
+    const doc = await UserModel.find({ _id: _id });
+    res.status(200).json(doc);
   } else {
     res.status(401).json(null);
   }

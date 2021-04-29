@@ -10,6 +10,7 @@
 
 .icon:hover {
   color: #3169da !important;
+  cursor: pointer;
 }
 
 .textButton:hover {
@@ -26,6 +27,10 @@
   background-position-x: calc(100% - 5px);
   background-position-y: 7px;
   background-size: 1.1rem;
+}
+
+#select:hover {
+  cursor: pointer;
 }
 
 button {

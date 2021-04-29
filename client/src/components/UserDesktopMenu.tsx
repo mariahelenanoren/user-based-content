@@ -1,15 +1,15 @@
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { User } from "../interfaces";
 
 interface Props {
-  user: {
-    userName: string;
-    role: string;
-  };
+  user: User;
 }
 
 export default function UserDesktopMenu(props: Props) {
-  const { user } = props;
+  const user = props.user;
+
+  console.log(user);
 
   return (
     <div className="desktopMenu" style={desktopMenu}>
