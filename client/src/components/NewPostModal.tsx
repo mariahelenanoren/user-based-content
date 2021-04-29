@@ -3,7 +3,7 @@ import { useState } from "react";
 import { makeRequest } from "../helper";
 
 interface Props {
-  setModalIsVisible: (value: React.SetStateAction<boolean>) => void;
+  setNewModalIsVisible: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function NewPostModal(props: Props) {
@@ -16,16 +16,14 @@ export default function NewPostModal(props: Props) {
   async function handleClick() {
     const body = { text: text };
     const res = await makeRequest("/api/post", "POST", body);
-    console.log(res);
-    props.setModalIsVisible(false);
-    window.location.reload();
+    props.setNewModalIsVisible(false);
   }
 
   return (
     <div className="modalContainer" style={modalContainer}>
       <div style={buttonContainer}>
         <button
-          onClick={() => props.setModalIsVisible(false)}
+          onClick={() => props.setNewModalIsVisible(false)}
           style={closeButton}
         >
           Avbryt

@@ -6,7 +6,7 @@ import NewPostModal from "../components/NewPostModal";
 import EditPostModal from "../components/EditPostModal";
 
 export default function UserPostsPage() {
-  const [isModalVisible, setModalIsVisible] = useState(false);
+  const [isModalVisible, setNewModalIsVisible] = useState(false);
   const [isEditModalVisible, setEditModalIsVisible] = useState(false);
   const [posts, setPosts] = useState([]);
 
@@ -22,25 +22,29 @@ export default function UserPostsPage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [setNewModalIsVisible]);
 
   return (
     <>
       <Header
         title={"Dina posts"}
-        setModalIsVisible={setModalIsVisible}
+        setNewModalIsVisible={setNewModalIsVisible}
         postButton={true}
       />
       <div className="content" style={content}>
         {isModalVisible && (
-          <NewPostModal setModalIsVisible={setModalIsVisible} />
+          <NewPostModal setNewModalIsVisible={setNewModalIsVisible} />
         )}
         {isEditModalVisible && (
           <EditPostModal setEditModalIsVisible={setEditModalIsVisible} />
         )}
 
         {posts.map((post, id) => (
-          <PostCard setIsEditModalVisible={setEditModalIsVisible} key={id} post={post} />
+          <PostCard
+            setIsEditModalVisible={setEditModalIsVisible}
+            key={id}
+            post={post}
+          />
         ))}
       </div>
     </>

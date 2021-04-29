@@ -3,22 +3,25 @@ import { CSSProperties } from "react";
 interface Props {
   title: string;
   postButton: boolean;
-  setModalIsVisible?: (value: React.SetStateAction<boolean>) => void;
+  setNewModalIsVisible?: (value: React.SetStateAction<boolean>) => void;
 }
-
 
 export default function Header(props: Props) {
   return (
     <div className="header" style={header}>
       <h2 style={title}>{props.title}</h2>
       {props.postButton ? (
-        <button className="filledButton" style={postButton} onClick={() => props.setModalIsVisible!(true)}>
+        <button
+          className="filledButton"
+          style={postButton}
+          onClick={() => props.setNewModalIsVisible!(true)}
+        >
           Ny post
         </button>
       ) : null}
     </div>
   );
- }
+}
 
 const header: CSSProperties = {
   position: "fixed",
