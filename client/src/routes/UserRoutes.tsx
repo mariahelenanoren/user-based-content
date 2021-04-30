@@ -15,7 +15,9 @@ export default function UserRoutes(props: Props) {
   return (
     <div style={main}>
       <Switch>
-        <Route exact path={"/user"} component={UserPostsPage} />
+        <Route exact path={"/user"}>
+          <UserPostsPage user={user} />
+        </Route>
         <Route path={"/user/latest-posts"}>
           <LatestPostPage user={user} />
         </Route>
