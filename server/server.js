@@ -13,7 +13,7 @@ app.use(
 		name: 'session',
 		secret: 's3ssionK3y',
 		secure: false,
-		maxAge: 1000 * 60 * 60,
+		maxAge: 1000 * 60 * 30,
 		httpOnly: true,
 	}),
 );

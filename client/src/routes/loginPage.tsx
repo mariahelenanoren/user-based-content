@@ -15,30 +15,44 @@ function Alert(props: AlertProps) {
 
 const LoginPage: React.FC<Props> = () => {
 	const history = useHistory();
+	const classes = useStyles();
+	const [open, setOpen] = React.useState(false);
+	const [error, setError] = useState('');
 	const [user, setUser] = useState({
 		userName: '',
 		password: '',
 	});
-	async function loginUser() {
+	/* async function loginUser() {
 		const body = user;
 		const status = await makeRequest('/api/login', 'POST', body);
 		console.log(status);
+	} */
+
+	async function loginUser() {
+		const body = user;
+		try {
+			const status = await makeRequest('/api/login', 'POST', body);
+			console.log(status);
+			history.push('/user');
+		} catch (error) {
+			console.log(error);
+			setError(error);
+			setOpen(true);
+		}
 	}
+
 	const handleChange = (key: string, value: string) => {
 		setUser((prevState) => ({ ...prevState, [key]: value }));
 	};
 
-	const handleSubmit = (e: { preventDefault: () => void }) => {
+	/* const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		history.push('/user');
-	};
+	}; */
 
-	const classes = useStyles();
-	const [open, setOpen] = React.useState(false);
-
-	const handlePostFeedback = () => {
+	/* const handlePostFeedback = () => {
 		setOpen(true);
-	};
+	}; */
 
 	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
 		if (reason === 'clickaway') {
@@ -50,55 +64,47 @@ const LoginPage: React.FC<Props> = () => {
 	return (
 		<div style={mainStyle}>
 			<div style={box}>
-				<form onSubmit={handleSubmit}>
-					<div style={title}>Logga in på Postr</div>
-					<div>
-						<input
-							style={input}
-							type='userName'
-							name='userName'
-							id='userName'
-							placeholder={'Användarnamn'}
-							onChange={(e) => handleChange('userName', e.target.value)}
-						/>
-					</div>
-					<div>
-						<input
-							style={input}
-							type='password'
-							name='password'
-							id='password'
-							placeholder={'Lösenord'}
-							onChange={(e) => handleChange('password', e.target.value)}
-						/>
-					</div>
-					<div>
-						<button
-							style={button}
-							onClick={() => {
-								handlePostFeedback();
-								loginUser();
-							}}
-						>
-							Logga in
-						</button>
-					</div>
-					<div style={linkStyles}>
-						<Link to=''>Har du glömt ditt lösenord? </Link>
-						<Link to='/registration'>Registrera dig för Postr</Link>
-					</div>
-					<div className={classes.root}>
-						<Snackbar
-							open={open}
-							autoHideDuration={2000}
-							onClose={handleClose}
-						>
-							<Alert onClose={handleClose} severity='error'>
-								Du måste fylla i alla fält korrekt
-							</Alert>
-						</Snackbar>
-					</div>
-				</form>
+				<div style={title}>Logga in på Postr</div>
+				<div>
+					<input
+						style={input}
+						type='userName'
+						name='userName'
+						id='userName'
+						placeholder={'Användarnamn'}
+						onChange={(e) => handleChange('userName', e.target.value)}
+					/>
+				</div>
+				<div>
+					<input
+						style={input}
+						type='password'
+						name='password'
+						id='password'
+						placeholder={'Lösenord'}
+						onChange={(e) => handleChange('password', e.target.value)}
+					/>
+				</div>
+				<div>
+					<button style={button} onClick={loginUser}>
+						Logga in
+					</button>
+				</div>
+				<div style={linkStyles}>
+					<Link to=''>Har du glömt ditt lösenord? </Link>
+					<Link to='/registration'>Registrera dig för Postr</Link>
+				</div>
+				<div className={classes.root}>
+					<Snackbar
+						open={open}
+						autoHideDuration={6000}
+						onClose={handleClose}
+					>
+						<Alert onClose={handleClose} severity='error'>
+							{error}
+						</Alert>
+					</Snackbar>
+				</div>
 			</div>
 		</div>
 	);

@@ -1,17 +1,25 @@
 import { CSSProperties, useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { makeRequest } from '../helper';
-// import Snackbar from '@material-ui/core/Snackbar';
-// import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-// import { makeStyles, Theme } from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { makeStyles, Theme } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 interface State {
 	role: string;
 }
 
+function Alert(props: AlertProps) {
+	return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
+
 interface Props extends RouteComponentProps<{}, {}, State> {}
 
 function RegistrationPage(props: Props) {
+	const history = useHistory();
+	const classes = useStyles();
+	const [error, setError] = useState('');
+	const [open, setOpen] = useState(false);
 	const role = props?.location?.state?.role || 'user';
 	const [user, setUser] = useState({
 		firstName: '',
@@ -21,103 +29,136 @@ function RegistrationPage(props: Props) {
 		password: '',
 		role: role,
 	});
-	const history = useHistory();
+
 	async function registerUser() {
 		const body = user;
-		const res = await makeRequest('/api/register', 'POST', body);
-		const handleSubmit = (e: { preventDefault: () => void }) => {
-			e.preventDefault();
+		try {
+			const res = await makeRequest('/api/register', 'POST', body);
+			console.log(res);
 			history.push('/login');
-		};
-		console.log(res);
+		} catch (error) {
+			console.log(error);
+			setError(error);
+			setOpen(true);
+		}
 	}
 	const handleChange = (key: string, value: string) => {
 		setUser((prevState) => ({ ...prevState, [key]: value }));
 	};
 
+	// const handleSubmit = (e: { preventDefault: () => void }) => {
+	// 	e.preventDefault();
+	// 	history.push('/login');
+	// };
+
+	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setOpen(false);
+	};
+
 	return (
 		<div style={mainStyle}>
 			<div style={box}>
-				<form onSubmit={handleSubmit}>
-					<div style={title}>Skapa ett Postr konto</div>
-					<div>
-						<input
-							required
-							style={input}
-							type='firstName'
-							name='firstName'
-							id='firstName'
-							placeholder={'Förnamn'}
-							onChange={(e) => handleChange('firstName', e.target.value)}
-						/>
-						<input
-							required
-							style={input}
-							type='lastName'
-							name='lastName'
-							id='lastName'
-							placeholder={'Efternamn'}
-							onChange={(e) => handleChange('lastName', e.target.value)}
-						/>
-						<input
-							required
-							style={input}
-							type='userName'
-							name='userName'
-							id='userName'
-							placeholder={'Användarnamn'}
-							onChange={(e) => handleChange('userName', e.target.value)}
-						/>
-						<input
-							required
-							id='email'
-							style={input}
-							type='email'
-							name='email'
-							placeholder={'Epost'}
-							onChange={(e) => handleChange('email', e.target.value)}
-						/>
-					</div>
-					<div>
-						<input
-							required
-							id='password'
-							style={input}
-							type='password'
-							name='password'
-							placeholder={'Lösenord'}
-							onChange={(e) => handleChange('password', e.target.value)}
-						/>
-					</div>
-					<div>
-						<button
-							style={button}
-							onClick={() => {
-								// handlePostFeedback();
-								registerUser();
-							}}
-						>
-							Registrera dig
-						</button>
-					</div>
-					<div style={linkText}>
-						<Link
-							className='textButton'
-							to={{
-								pathname: '/registration',
-								state: { role: 'admin' },
-							}}
-						>
-							Admin? Registrera dig här
-						</Link>
-					</div>
-				</form>
+				<div style={title}>Skapa ett Postr konto</div>
+				<div>
+					<input
+						required
+						style={input}
+						type='firstName'
+						name='firstName'
+						id='firstName'
+						placeholder={'Förnamn'}
+						onChange={(e) => handleChange('firstName', e.target.value)}
+					/>
+					<input
+						required
+						style={input}
+						type='lastName'
+						name='lastName'
+						id='lastName'
+						placeholder={'Efternamn'}
+						onChange={(e) => handleChange('lastName', e.target.value)}
+					/>
+					<input
+						required
+						style={input}
+						type='userName'
+						name='userName'
+						id='userName'
+						placeholder={'Användarnamn'}
+						onChange={(e) => handleChange('userName', e.target.value)}
+					/>
+					<input
+						required
+						id='email'
+						style={input}
+						type='email'
+						name='email'
+						placeholder={'Epost'}
+						onChange={(e) => handleChange('email', e.target.value)}
+					/>
+				</div>
+				<div>
+					<input
+						required
+						id='password'
+						style={input}
+						type='password'
+						name='password'
+						placeholder={'Lösenord'}
+						onChange={(e) => handleChange('password', e.target.value)}
+					/>
+				</div>
+				<div>
+					<button
+						style={button}
+						onClick={() => {
+							// handlePostFeedback();
+							registerUser();
+						}}
+					>
+						Registrera dig
+					</button>
+				</div>
+				<div style={linkText}>
+					<Link
+						className='textButton'
+						to={{
+							pathname: '/registration',
+							state: { role: 'admin' },
+						}}
+					>
+						Admin? Registrera dig här
+					</Link>
+				</div>
+				<div className={classes.root}>
+					<Snackbar
+						open={open}
+						autoHideDuration={6000}
+						onClose={handleClose}
+					>
+						<Alert onClose={handleClose} severity='error'>
+							{error}
+						</Alert>
+					</Snackbar>
+				</div>
 			</div>
 		</div>
 	);
 }
 
 export default withRouter(RegistrationPage);
+
+const useStyles = makeStyles((theme: Theme) => ({
+	root: {
+		width: '100%',
+		'& > * + *': {
+			marginTop: theme.spacing(2),
+		},
+	},
+}));
 
 const mainStyle: CSSProperties = {
 	display: 'flex',
