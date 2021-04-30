@@ -3,12 +3,14 @@ import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import { User } from "../interfaces";
 
-interface Props extends User {
-  changeUserRole: (value: string, _id: string) => void;
+interface Props {
+  user: User;
+  deleteUser: (id: string) => void;
+  changeUserRole: (value: string, id: string) => void;
 }
 
 export default function UserListBar(props: Props) {
-  const { user } = props;
+  const { user, deleteUser, changeUserRole } = props;
 
   return (
     <div style={bar}>
@@ -25,12 +27,16 @@ export default function UserListBar(props: Props) {
           id="select"
           style={select}
           value={user.role}
-          onChange={(e) => props.changeUserRole(e.target.value, user._id)}
+          onChange={(e) => changeUserRole(e.target.value, user._id)}
         >
           <option value="admin">Admin</option>
           <option value="user">User</option>
         </select>
-        <DeleteIcon style={deleteIcon} />
+        <DeleteIcon
+          className="icon"
+          style={deleteIcon}
+          onClick={() => deleteUser(user._id)}
+        />
       </div>
     </div>
   );

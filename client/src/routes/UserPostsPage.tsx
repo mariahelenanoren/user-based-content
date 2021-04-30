@@ -4,9 +4,13 @@ import PostCard from '../components/postCard';
 import { makeRequest } from '../helper';
 import NewPostModal from '../components/NewPostModal';
 import EditPostModal from '../components/EditPostModal';
-import { Post } from '../interfaces';
+import { Post, User } from '../interfaces';
+interface Props {
+	user: User;
+}
 
-export default function UserPostsPage() {
+export default function UserPostsPage(props: Props) {
+	const { user } = props;
 	const [posts, setPosts] = useState([]);
 	const [createModal, setCreateModal] = useState({
 		isVisible: false,

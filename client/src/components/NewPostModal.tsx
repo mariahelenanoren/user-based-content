@@ -1,11 +1,9 @@
+import React from 'react';
 import { CSSProperties } from '@material-ui/styles';
 import { CreateModal } from '../interfaces';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core';
-// import { makeStyles, Theme } from '@material-ui/core/styles';
-interface Props {
 	setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
 
@@ -21,7 +19,6 @@ export default function NewPostModal(props: Props) {
 	const handlePostFeedback = () => {
 		setOpen(true);
 	};
-
 	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
 		if (reason === 'clickaway') {
 			return;
@@ -35,17 +32,12 @@ export default function NewPostModal(props: Props) {
 			text: text,
 		}));
 	}
-
 	function handleClick() {
 		setCreateModal((prevState) => ({
 			...prevState,
 			postCreated: true,
 		}));
 	}
-
-	// const handlePostFeedback = () => {
-	// 	setOpen(true);
-	// };
 
 	return (
 		<div className='modalContainer' style={modalContainer}>
@@ -63,7 +55,6 @@ export default function NewPostModal(props: Props) {
 					>
 						Avbryt
 					</button>
-					¨
 					<button
 						style={postButton}
 						onClick={() => {
@@ -100,7 +91,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 }));
-
 const modalContainer: CSSProperties = {
 	position: 'absolute',
 	padding: '0.5rem 1.5rem 1.5rem 1.5rem',
@@ -112,7 +102,6 @@ const modalContainer: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 };
-
 const modalHeader: CSSProperties = {
 	display: 'flex',
 	justifyContent: 'space-between',
@@ -121,20 +110,17 @@ const modalHeader: CSSProperties = {
 	borderBottom: '0.1rem solid lightgrey',
 	marginBottom: '0.5rem',
 };
-
 const modalTitle: CSSProperties = {
 	color: '#000000',
 	fontWeight: 600,
 	margin: 0,
 };
-
 const buttonContainer: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 };
-
 const postButton: CSSProperties = {
 	backgroundColor: '#4780EE',
 	color: '#ffff',
@@ -148,7 +134,6 @@ const postButton: CSSProperties = {
 	alignItems: 'center',
 	justifyContent: 'center',
 };
-
 const textArea: CSSProperties = {
 	fontFamily: 'inherit',
 	height: '100%',
@@ -158,7 +143,6 @@ const textArea: CSSProperties = {
 	fontSize: '0.9rem',
 	resize: 'none',
 };
-
 const closeButton: CSSProperties = {
 	border: 'none',
 	color: '#4780EE',

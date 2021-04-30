@@ -14,8 +14,12 @@ const Layout: React.FC<Props> = () => {
 
   useEffect(() => {
     const getUserAuthentication = async () => {
-      const user = await makeRequest("/api/user-status", "GET");
-      setUser(user);
+      const user = await makeRequest("/api/user", "GET");
+      if (user) {
+        setUser(user[0]);
+      } else {
+        setUser(user);
+      }
     };
     getUserAuthentication();
   }, []);
@@ -29,7 +33,9 @@ const Layout: React.FC<Props> = () => {
         {user === null ? (
           <Redirect to={"/"} />
         ) : user === undefined ? null : (
-          <Route path="/user" component={UserPage} />
+          <Route path="/user">
+            <UserPage user={user} />
+          </Route>
         )}
       </Switch>
     </div>

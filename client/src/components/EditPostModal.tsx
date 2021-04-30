@@ -2,25 +2,16 @@ import { CSSProperties } from 'react';
 import { EditModal } from '../interfaces';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core';
-
+import React from 'react';
 interface Props {
 	editModal: EditModal;
 	setEditModal: (value: React.SetStateAction<EditModal>) => void;
 }
+
 function Alert(props: AlertProps) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
-
-const useStyles = makeStyles((theme: Theme) => ({
-	root: {
-		width: '100%',
-		'& > * + *': {
-			marginTop: theme.spacing(2),
-		},
-	},
-}));
 
 export default function EditPostModal(props: Props) {
 	const post = props.editModal.post;
@@ -53,6 +44,7 @@ export default function EditPostModal(props: Props) {
 
 		setOpen(false);
 	};
+
 	return (
 		<div className='modalContainer' style={modalContainer}>
 			<div style={modalHeader}>
@@ -69,7 +61,6 @@ export default function EditPostModal(props: Props) {
 					>
 						Avbryt
 					</button>
-					¨
 					<button
 						style={modalButtons}
 						onClick={() => {
@@ -91,13 +82,22 @@ export default function EditPostModal(props: Props) {
 			<div className={classes.root}>
 				<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
 					<Alert onClose={handleClose} severity='success'>
-						Din post har publicerats
+						Din post har uppdaterats
 					</Alert>
 				</Snackbar>
 			</div>
 		</div>
 	);
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+	root: {
+		width: '100%',
+		'& > * + *': {
+			marginTop: theme.spacing(2),
+		},
+	},
+}));
 
 const modalContainer: CSSProperties = {
 	position: 'absolute',
