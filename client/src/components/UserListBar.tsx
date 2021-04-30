@@ -1,6 +1,5 @@
 import DeleteIcon from '@material-ui/icons/Delete';
 import { CSSProperties } from '@material-ui/styles';
-import React from 'react';
 import { User } from '../interfaces';
 
 interface Props {
@@ -29,8 +28,12 @@ export default function UserListBar(props: Props) {
 					value={user.role}
 					onChange={(e) => changeUserRole(e.target.value, user._id)}
 				>
-					<option value='admin'>Admin</option>
-					<option value='user'>User</option>
+					<option style={optionStyle} value='admin'>
+						Admin
+					</option>
+					<option style={optionStyle} value='user'>
+						User
+					</option>
 				</select>
 				<DeleteIcon
 					className='icon'
@@ -79,6 +82,9 @@ const select: CSSProperties = {
 	WebkitAppearance: 'none',
 	MozAppearance: 'none',
 	appearance: 'none',
+};
+const optionStyle: CSSProperties = {
+	color: '#2D2D2D',
 };
 const deleteIcon: CSSProperties = {
 	color: '#4780EE',
