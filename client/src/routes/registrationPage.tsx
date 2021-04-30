@@ -1,6 +1,6 @@
-import { CSSProperties, useState } from 'react';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import { makeRequest } from '../helper';
+import { CSSProperties, useState } from "react";
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import { makeRequest } from "../helper";
 interface State {
   role: string;
 }
@@ -19,13 +19,11 @@ function RegistrationPage(props: Props) {
   });
   async function registerUser() {
     const body = user;
-    const status = await makeRequest("/api/register", "POST", body);
-    console.log(status);
+    const res = await makeRequest("/api/register", "POST", body);
+    console.log(res);
   }
   const handleChange = (key: string, value: string) => {
-    console.log(key, value);
     setUser((prevState) => ({ ...prevState, [key]: value }));
-    console.log(user);
   };
 
   return (
@@ -87,7 +85,12 @@ function RegistrationPage(props: Props) {
           </button>
         </div>
         <div style={linkText}>
-          <Link to="">Admin? Registrera dig här</Link>
+          <Link
+            className="textButton"
+            to={{ pathname: "/registration", state: { role: "admin" } }}
+          >
+            Admin? Registrera dig här
+          </Link>
         </div>
       </div>
     </div>
@@ -97,61 +100,59 @@ function RegistrationPage(props: Props) {
 export default withRouter(RegistrationPage);
 
 const mainStyle: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  height: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  textAlign: 'center',
-  backgroundColor: '#111111',
-
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  height: "100%",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  backgroundColor: "#111111",
 };
 const box: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%em',
-  height: '25rem',
-  justifyContent: 'center',
-  alignItems: 'center',
-  textAlign: 'center',
-  backgroundColor: '#111111',
- 
+  display: "flex",
+  flexDirection: "column",
+  width: "100%em",
+  height: "25rem",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  backgroundColor: "#111111",
 };
 const title: CSSProperties = {
-   color: '#d3dde4',
-   fontSize: '2.5rem',
-   marginBottom: '2rem',
-   fontWeight: 500,
+  color: "#d3dde4",
+  fontSize: "2.5rem",
+  marginBottom: "2rem",
+  fontWeight: 500,
 };
 const input: CSSProperties = {
-  background: '#000000',
-  margin: '0.5rem',
-  width: '18rem',
-  height: '2.5rem',
-  borderColor: '#656874',
-  color: '#6b6d73',
+  background: "#000000",
+  margin: "0.5rem",
+  width: "18rem",
+  height: "2.5rem",
+  borderColor: "#656874",
+  color: "white",
   borderWidth: 1,
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
 };
 const button: CSSProperties = {
-  backgroundColor: '#4780EE',
-  color: '#ffff',
+  backgroundColor: "#4780EE",
+  color: "#ffff",
   border: "none",
   borderRadius: "0.5rem",
   fontSize: "0.9rem",
   fontWeight: 600,
-  margin: '0.3rem',
-  width: '10rem',
-  height: '2rem',
-  cursor: 'pointer',
-  marginTop: '1rem',
-
+  margin: "0.3rem",
+  width: "10rem",
+  height: "2rem",
+  cursor: "pointer",
+  marginTop: "1rem",
 };
 const linkText: CSSProperties = {
-  color: '#4780EE',
-  fontSize: '0.7rem',
-  display: 'flex',
-  flexDirection: 'column',
+  color: "#4780EE",
+  fontSize: "0.7rem",
+  display: "flex",
+  flexDirection: "column",
+  textDecoration: "none",
 };
