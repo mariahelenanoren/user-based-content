@@ -8,6 +8,7 @@ interface Props {
 	editModal: EditModal;
 	setEditModal: (value: React.SetStateAction<EditModal>) => void;
 }
+
 function Alert(props: AlertProps) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 }

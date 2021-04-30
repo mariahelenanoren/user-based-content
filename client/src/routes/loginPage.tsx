@@ -49,7 +49,6 @@ const LoginPage: React.FC<Props> = () => {
 	return (
 		<div style={mainStyle}>
 			<div style={box}>
-				{/* <form> */}
 				<form onSubmit={handleSubmit}>
 					<div style={title}>Logga in på Postr</div>
 					<div>
