@@ -22,7 +22,9 @@ export default function UserRoutes(props: Props) {
           <LatestPostPage user={user} />
         </Route>
         {user.role === "admin" ? (
-          <Route path={"/user/users"} component={AdminUsersPage} />
+          <Route path={"/user/users"}>
+            <AdminUsersPage user={user} />
+          </Route>
         ) : (
           <Redirect to={"/user"} />
         )}

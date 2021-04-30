@@ -1,10 +1,17 @@
 import React, { CSSProperties, useEffect, useState } from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import Header from "../components/Header";
 import UserListBar from "../components/UserListBar";
 import { makeRequest } from "../helper";
+import { User } from "../interfaces";
 
-export default function AdminUsersPage() {
+interface Props extends RouteComponentProps {
+  user: User;
+}
+
+function AdminUsersPage(props: Props) {
   const [users, setUsers] = useState([]);
+  const { user } = props;
   useEffect(() => {
     updateUsers();
   }, []);
@@ -15,17 +22,27 @@ export default function AdminUsersPage() {
   };
 
   const changeUserRole = async (role: string, id: string) => {
-    const body = { role: role, _id: id };
+    const body = { role: role, _id: id, _user: user._id };
     const res = await makeRequest("/api/user/:id", "PUT", body);
     console.log(res);
-    updateUsers();
+
+    if (id === user._id) {
+      window.location.reload();
+    } else {
+      updateUsers();
+    }
   };
 
   const deleteUser = async (id: string) => {
-    const body = { _id: id };
+    const body = { _id: id, _user: user._id };
     const res = await makeRequest("/api/user/:id", "DELETE", body);
     console.log(res);
-    updateUsers();
+
+    if (id === user._id) {
+      props.history.push("/");
+    } else {
+      updateUsers();
+    }
   };
 
   return (
@@ -44,6 +61,8 @@ export default function AdminUsersPage() {
     </>
   );
 }
+
+export default withRouter(AdminUsersPage);
 
 const content: CSSProperties = {
   padding: "5.5rem 2.5rem 2.5rem 2.5rem",
