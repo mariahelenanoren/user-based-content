@@ -87,7 +87,7 @@ function RegistrationPage(props: Props) {
           </button>
         </div>
         <div style={linkText}>
-          <Link to="">Admin? Registrera dig här</Link>
+          <Link className="textButton" to="">Admin? Registrera dig här</Link>
         </div>
       </div>
     </div>
@@ -130,7 +130,7 @@ const input: CSSProperties = {
   width: '18rem',
   height: '2.5rem',
   borderColor: '#656874',
-  color: '#6b6d73',
+  color: 'white',
   borderWidth: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -154,4 +154,5 @@ const linkText: CSSProperties = {
   fontSize: '0.7rem',
   display: 'flex',
   flexDirection: 'column',
+  textDecoration: 'none',
 };

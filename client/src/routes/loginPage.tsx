@@ -45,9 +45,9 @@ const LoginPage: React.FC<Props> = () => {
                <div>
                   <button style={button} onClick={loginUser}>Logga in</button>
                </div>
-               <div style={linkStyles}>
-               <Link to="">Har du glömt ditt lösenord? </Link>
-               <Link to="/registration">Registrera dig för Postr</Link>
+               <div style={linkStyles} >
+               <Link className="textButton" to="">Har du glömt ditt lösenord?  </Link>
+               <Link className="textButton" to="/registration">Registrera dig för Postr</Link>
                </div>
          </div>
       </div>
@@ -85,6 +85,7 @@ const title: CSSProperties = {
 };
 const input: CSSProperties = {
    background: '#000000',
+   color: 'white',
    margin: '0.5rem',
    width: '18rem',
    height: '2.5rem',
@@ -109,7 +110,7 @@ const button: CSSProperties = {
 const linkStyles: CSSProperties = {
    display: 'flex',
    flexDirection: 'column',
-   textDecoration: 'underline',
+   textDecoration: 'none',
    color:  '#4780EE',
    marginTop: '0.5rem',
 }
