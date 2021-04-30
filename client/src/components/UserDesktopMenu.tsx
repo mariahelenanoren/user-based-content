@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { makeRequest } from '../helper';
 import { User } from '../interfaces';
@@ -78,11 +78,9 @@ const desktopMenu: CSSProperties = {
 	backgroundColor: '#2D2D2D',
 	zIndex: 1000,
 };
-
 const profilePictureContainer: CSSProperties = {
 	position: 'relative',
 };
-
 const adminBadge: CSSProperties = {
 	position: 'absolute',
 	borderRadius: '0.8rem',
@@ -92,20 +90,16 @@ const adminBadge: CSSProperties = {
 	fontSize: '0.8rem',
 	padding: '0.3rem 0.7rem',
 };
-
 const profilePicture: CSSProperties = {
 	borderRadius: '100%',
 	width: '8rem',
 };
-
 const userName: CSSProperties = {
 	marginBottom: '2rem',
 };
-
 const nav: CSSProperties = {
 	width: '100%',
 };
-
 const navList: CSSProperties = {
 	width: '100%',
 	listStyle: 'none',
@@ -113,13 +107,11 @@ const navList: CSSProperties = {
 	margin: 0,
 	borderBottom: '1px #5A5A5A solid',
 };
-
 const navItem: CSSProperties = {
 	padding: '1rem 1.5rem',
 	textAlign: 'left',
 	borderTop: '1px #5A5A5A solid',
 };
-
 const buttonContainer: CSSProperties = {
 	marginTop: '1rem',
 	padding: '0 1.5rem',
@@ -128,7 +120,6 @@ const buttonContainer: CSSProperties = {
 	display: 'flex',
 	alignItems: 'flex-end',
 };
-
 const outlinedButton: CSSProperties = {
 	width: '100%',
 	padding: '0.5rem 1rem',

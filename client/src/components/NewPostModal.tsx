@@ -4,7 +4,6 @@ import { CreateModal } from '../interfaces';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { makeStyles, Theme } from '@material-ui/core';
-
 interface Props {
 	setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
@@ -17,7 +16,6 @@ export default function NewPostModal(props: Props) {
 	const { setCreateModal } = props;
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
-
 	const handlePostFeedback = () => {
 		setOpen(true);
 	};
@@ -25,15 +23,16 @@ export default function NewPostModal(props: Props) {
 		if (reason === 'clickaway') {
 			return;
 		}
-
 		setOpen(false);
 	};
+
 	function handleChange(text: string) {
 		setCreateModal((prevState) => ({
 			...prevState,
 			text: text,
 		}));
 	}
+
 	function handleClick() {
 		setCreateModal((prevState) => ({
 			...prevState,
@@ -75,7 +74,7 @@ export default function NewPostModal(props: Props) {
 				onChange={(event) => handleChange(event.target.value)}
 			></textarea>
 			<div className={classes.root}>
-				<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 					<Alert onClose={handleClose} severity='success'>
 						Din post har publicerats
 					</Alert>

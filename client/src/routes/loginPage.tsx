@@ -22,11 +22,15 @@ const LoginPage: React.FC<Props> = () => {
 		userName: '',
 		password: '',
 	});
-	/* async function loginUser() {
-		const body = user;
-		const status = await makeRequest('/api/login', 'POST', body);
-		console.log(status);
-	} */
+	const handleChange = (key: string, value: string) => {
+		setUser((prevState) => ({ ...prevState, [key]: value }));
+	};
+	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setOpen(false);
+	};
 
 	async function loginUser() {
 		const body = user;
@@ -40,26 +44,6 @@ const LoginPage: React.FC<Props> = () => {
 			setOpen(true);
 		}
 	}
-
-	const handleChange = (key: string, value: string) => {
-		setUser((prevState) => ({ ...prevState, [key]: value }));
-	};
-
-	/* const handleSubmit = (e: { preventDefault: () => void }) => {
-		e.preventDefault();
-		history.push('/user');
-	}; */
-
-	/* const handlePostFeedback = () => {
-		setOpen(true);
-	}; */
-
-	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-		setOpen(false);
-	};
 
 	return (
 		<div style={mainStyle}>
@@ -120,7 +104,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 }));
-
 const mainStyle: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',

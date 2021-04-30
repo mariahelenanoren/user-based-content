@@ -16,14 +16,12 @@ function Alert(props: AlertProps) {
 export default function EditPostModal(props: Props) {
 	const post = props.editModal.post;
 	const { setEditModal } = props;
-
 	const handleChange = (text: string) => {
 		setEditModal((prevState) => ({
 			...prevState,
 			post: { ...post, text: text },
 		}));
 	};
-
 	const handleClick = () => {
 		setEditModal((prevState) => ({
 			...prevState,
@@ -36,12 +34,10 @@ export default function EditPostModal(props: Props) {
 	const handlePostFeedback = () => {
 		setOpen(true);
 	};
-
 	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
 		if (reason === 'clickaway') {
 			return;
 		}
-
 		setOpen(false);
 	};
 
@@ -80,7 +76,7 @@ export default function EditPostModal(props: Props) {
 				onChange={(event) => handleChange(event.target.value)}
 			></textarea>
 			<div className={classes.root}>
-				<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 					<Alert onClose={handleClose} severity='success'>
 						Din post har uppdaterats
 					</Alert>
@@ -98,7 +94,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 }));
-
 const modalContainer: CSSProperties = {
 	position: 'absolute',
 	padding: '0.5rem 1.5rem 1.5rem 1.5rem',
@@ -110,7 +105,6 @@ const modalContainer: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 };
-
 const modalHeader: CSSProperties = {
 	display: 'flex',
 	justifyContent: 'space-between',
@@ -119,20 +113,17 @@ const modalHeader: CSSProperties = {
 	borderBottom: '0.1rem solid lightgrey',
 	marginBottom: '0.5rem',
 };
-
 const modalTitle: CSSProperties = {
 	color: '#000000',
 	fontWeight: 600,
 	margin: 0,
 };
-
 const buttonContainer: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 };
-
 const modalButtons: CSSProperties = {
 	backgroundColor: '#4780EE',
 	color: '#ffff',
@@ -147,7 +138,6 @@ const modalButtons: CSSProperties = {
 	alignItems: 'center',
 	justifyContent: 'center',
 };
-
 const textArea: CSSProperties = {
 	fontFamily: 'inherit',
 	height: '100%',
@@ -157,7 +147,6 @@ const textArea: CSSProperties = {
 	fontSize: '0.9rem',
 	resize: 'none',
 };
-
 const closeButton: CSSProperties = {
 	border: 'none',
 	color: '#4780EE',

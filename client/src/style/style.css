@@ -1,38 +1,38 @@
 .outlinedButton:hover {
-  color: #ffff !important;
-  background-color: #4780ee !important;
+	color: #ffff !important;
+	background-color: #4780ee !important;
 }
 
 .filledButton:hover {
-  background-color: #3169da !important;
-  border-color: #3169da !important;
+	background-color: #3169da !important;
+	border-color: #3169da !important;
 }
 
 .icon:hover {
-  color: #3169da !important;
-  cursor: pointer;
+	color: #3169da !important;
+	cursor: pointer;
 }
 
 .textButton:hover {
-  text-decoration: underline !important;
+	text-decoration: underline !important;
 }
 
 .navItem:hover {
-  background-color: #272727 !important;
+	background-color: #272727 !important;
 }
 
 #select {
-  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: calc(100% - 5px);
-  background-position-y: 7px;
-  background-size: 1.1rem;
+	background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+	background-repeat: no-repeat;
+	background-position-x: calc(100% - 5px);
+	background-position-y: 7px;
+	background-size: 1.1rem;
 }
 
 #select:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
