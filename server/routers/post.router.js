@@ -2,9 +2,9 @@ const express = require("express");
 const PostModel = require("../models/post.model");
 const router = express.Router();
 
-/* Gets for all the posts */
+/* Gets all the posts */
 router.get("/api/posts", async (req, res) => {
-  const docs = await PostModel.find({});
+  const docs = await PostModel.find({}).sort({ _id: -1 });
   res.status(200).json(docs);
 });
 
@@ -15,10 +15,10 @@ router.get("/api/post/:id", async (req, res) => {
   res.status(200).json(docs);
 });
 
-/* Gets current users posts */
+/* Gets current session user's posts */
 router.get("/api/posts/user", async (req, res) => {
   const user = req.session.user;
-  const docs = await PostModel.find({ _user: user });
+  const docs = await PostModel.find({ _user: user }).sort({ _id: -1 });
   res.status(200).json(docs);
 });
 
