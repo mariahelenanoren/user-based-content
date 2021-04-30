@@ -44,7 +44,7 @@ const LoginPage: React.FC<Props> = () => {
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		history.push('/UserPage');
+		history.push('/user');
 	};
 
 	return (
