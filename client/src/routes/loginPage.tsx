@@ -115,7 +115,7 @@ const button: CSSProperties = {
 const linkStyles: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  textDecoration: "underline",
+  textDecoration: "none",
   color: "#4780EE",
   marginTop: "0.5rem",
 };
