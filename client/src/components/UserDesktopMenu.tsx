@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { makeRequest } from "../helper";
 import { User } from "../interfaces";
 
 interface Props {
@@ -9,7 +10,10 @@ interface Props {
 export default function UserDesktopMenu(props: Props) {
   const user = props.user;
 
-  console.log(user);
+  const logOut = async () => {
+    const res = await makeRequest("/api/logout", "DELETE");
+    console.log(res);
+  };
 
   return (
     <div className="desktopMenu" style={desktopMenu}>
@@ -44,7 +48,11 @@ export default function UserDesktopMenu(props: Props) {
         </ul>
       </nav>
       <div style={buttonContainer}>
-        <button className="outlinedButton" style={outlinedButton}>
+        <button
+          onClick={logOut}
+          className="outlinedButton"
+          style={outlinedButton}
+        >
           Logga ut
         </button>
       </div>

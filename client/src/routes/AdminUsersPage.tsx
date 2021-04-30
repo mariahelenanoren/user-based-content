@@ -17,13 +17,14 @@ export default function AdminUsersPage() {
   const changeUserRole = async (role: string, id: string) => {
     const body = { role: role, _id: id };
     const res = await makeRequest("/api/user/:id", "PUT", body);
-    updateUsers();
     console.log(res);
+    updateUsers();
   };
 
   const deleteUser = async (id: string) => {
     const body = { _id: id };
     const res = await makeRequest("/api/user/:id", "DELETE", body);
+    console.log(res);
     updateUsers();
   };
 
