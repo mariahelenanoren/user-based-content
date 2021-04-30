@@ -17,40 +17,14 @@ router.get('/api/user/:id', async (req, res) => {
 });
 
 /* Gets session user */
-<<<<<<< HEAD
 router.get('/api/user', async (req, res) => {
 	const _id = req.session.user;
-	const doc = await UserModel.find({ _id: _id });
-	res.status(200).json(doc);
-});
-
-/* Checks if user has the role of admin */
-router.get('/api/user-role', async (req, res) => {
-	const role = req.session.role;
-	if (role === 'admin') {
-		res.status(200).json(role);
-	} else {
-		res.status(401).json('User is not authorized');
-	}
-});
-
-/* Checks if user is logged in */
-router.get('/api/user-status', (req, res) => {
-	if (req.session.user) {
-		res.status(200).json(req.session.user);
+	if (_id) {
+		const doc = await UserModel.find({ _id: _id });
+		res.status(200).json(doc);
 	} else {
 		res.status(401).json(null);
 	}
-=======
-router.get("/api/user", async (req, res) => {
-  const _id = req.session.user;
-  if (_id) {
-    const doc = await UserModel.find({ _id: _id });
-    res.status(200).json(doc);
-  } else {
-    res.status(401).json(null);
-  }
->>>>>>> 38c8da9db017d8cefd1161caf9e762c773395e3f
 });
 
 /* Registers a user, only if a user with that username does not already exists */
@@ -106,43 +80,29 @@ router.use((req, res, next) => {
 });
 
 /* Updates a users role */
-<<<<<<< HEAD
 router.put('/api/user/:id', async (req, res) => {
-	const { role, _id } = req.body;
+	const { role, _id, _user } = req.body;
+	console.log(role);
 	const doc = await UserModel.updateOne({ _id: _id }, { role: role });
+
+	/* Changes role of session if user changes their own role */
+	if (_id === _user) {
+		session.role = role;
+	}
+
 	res.status(200).json('User role successfully updated');
 });
 
 /* Deletes a user */
 router.delete('/api/user/:id', async (req, res) => {
-	const { _id } = req.body;
+	const { _id, _user } = req.body;
 	const doc = await UserModel.deleteOne({ _id: _id });
+
+	/* Removes session if a user deletes itself */
+	if (_id === _user) {
+		req.session = null;
+	}
 	res.status(200).json('User successfully deleted');
-=======
-router.put("/api/user/:id", async (req, res) => {
-  const { role, _id, _user } = req.body;
-  console.log(role);
-  const doc = await UserModel.updateOne({ _id: _id }, { role: role });
-
-  /* Changes role of session if user changes their own role */
-  if (_id === _user) {
-    session.role = role;
-  }
-
-  res.status(200).json("User role successfully updated");
-});
-
-/* Deletes a user */
-router.delete("/api/user/:id", async (req, res) => {
-  const { _id, _user } = req.body;
-  const doc = await UserModel.deleteOne({ _id: _id });
-
-  /* Removes session if a user deletes itself */
-  if (_id === _user) {
-    req.session = null;
-  }
-  res.status(200).json("User successfully deleted");
->>>>>>> 38c8da9db017d8cefd1161caf9e762c773395e3f
 });
 
 module.exports = router;

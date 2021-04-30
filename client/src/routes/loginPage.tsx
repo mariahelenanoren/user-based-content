@@ -22,14 +22,15 @@ const LoginPage: React.FC<Props> = () => {
 	async function loginUser() {
 		const body = user;
 		const status = await makeRequest('/api/login', 'POST', body);
-		const handleSubmit = (e: { preventDefault: () => void }) => {
-			e.preventDefault();
-			history.push('/user');
-		};
 		console.log(status);
 	}
 	const handleChange = (key: string, value: string) => {
 		setUser((prevState) => ({ ...prevState, [key]: value }));
+	};
+
+	const handleSubmit = (e: { preventDefault: () => void }) => {
+		e.preventDefault();
+		history.push('/user');
 	};
 
 	const classes = useStyles();

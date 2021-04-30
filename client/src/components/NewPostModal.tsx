@@ -4,6 +4,8 @@ import { CreateModal } from '../interfaces';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { makeStyles, Theme } from '@material-ui/core';
+
+interface Props {
 	setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
 
