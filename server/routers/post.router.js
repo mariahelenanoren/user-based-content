@@ -43,7 +43,7 @@ the endpoint is the user stored in the post or has the
 role of admin */
 router.use("/api/post/:id", (req, res, next) => {
   const { user, role } = req.session;
-  if (req._user !== user && role !== "admin") {
+  if (req.body._user !== user && role !== "admin") {
     return res.status(403).json("Access denied");
   }
   next();
