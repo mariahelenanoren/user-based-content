@@ -4,9 +4,14 @@ import PostCard from "../components/postCard";
 import { makeRequest } from "../helper";
 import NewPostModal from "../components/NewPostModal";
 import EditPostModal from "../components/EditPostModal";
-import { Post } from "../interfaces";
+import { Post, User } from "../interfaces";
 
-export default function UserPostsPage() {
+interface Props {
+  user: User;
+}
+
+export default function UserPostsPage(props: Props) {
+  const { user } = props;
   const [posts, setPosts] = useState([]);
   const [createModal, setCreateModal] = useState({
     isVisible: false,
@@ -83,7 +88,7 @@ export default function UserPostsPage() {
   }, [createModal.postCreated, createModal.text]);
 
   const deletePost = async (id: string) => {
-    const body = { _id: id };
+    const body = { _id: id, _user: user._id };
     const res = await makeRequest("/api/post/:id", "DELETE", body);
     console.log(res);
     updatePosts();
