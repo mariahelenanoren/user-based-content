@@ -1,30 +1,12 @@
 import React from 'react';
 import { CSSProperties } from '@material-ui/styles';
 import { CreateModal } from '../interfaces';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { makeStyles, Theme } from '@material-ui/core';
 interface Props {
 	setCreateModal: (value: React.SetStateAction<CreateModal>) => void;
 }
 
-function Alert(props: AlertProps) {
-	return <MuiAlert elevation={6} variant='filled' {...props} />;
-}
-
 export default function NewPostModal(props: Props) {
 	const { setCreateModal } = props;
-	const classes = useStyles();
-	const [open, setOpen] = React.useState(false);
-	const handlePostFeedback = () => {
-		setOpen(true);
-	};
-	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-		setOpen(false);
-	};
 
 	function handleChange(text: string) {
 		setCreateModal((prevState) => ({
@@ -56,13 +38,7 @@ export default function NewPostModal(props: Props) {
 					>
 						Avbryt
 					</button>
-					<button
-						style={postButton}
-						onClick={() => {
-							handleClick();
-							handlePostFeedback();
-						}}
-					>
+					<button style={postButton} onClick={handleClick}>
 						Posta
 					</button>
 				</div>
@@ -73,25 +49,10 @@ export default function NewPostModal(props: Props) {
 				rows={5}
 				onChange={(event) => handleChange(event.target.value)}
 			></textarea>
-			<div className={classes.root}>
-				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-					<Alert onClose={handleClose} severity='success'>
-						Din post har publicerats
-					</Alert>
-				</Snackbar>
-			</div>
 		</div>
 	);
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-	root: {
-		width: '100%',
-		'& > * + *': {
-			marginTop: theme.spacing(2),
-		},
-	},
-}));
 const modalContainer: CSSProperties = {
 	position: 'absolute',
 	padding: '0.5rem 1.5rem 1.5rem 1.5rem',
