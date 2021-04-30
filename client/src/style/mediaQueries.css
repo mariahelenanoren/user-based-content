@@ -1,68 +1,68 @@
 @media (max-width: 768px) {
-  .mainContainer {
-    flex-direction: column !important;
-  }
+	.mainContainer {
+		flex-direction: column !important;
+	}
 
-  .desktopMenu {
-    display: none !important;
-  }
+	.desktopMenu {
+		display: none !important;
+	}
 
-  .header {
-    width: 100% !important;
-    top: 5rem !important;
-  }
+	.header {
+		width: 100% !important;
+		top: 5rem !important;
+	}
 
-  .mobileHeader {
-    display: flex !important;
-  }
+	.mobileHeader {
+		display: flex !important;
+	}
 
-  .contentContainer {
-    margin: 0 !important;
-    width: 100% !important;
-  }
+	.contentContainer {
+		margin: 0 !important;
+		width: 100% !important;
+	}
 
-  .content {
-    padding: 10.5rem 1.5rem 1.5rem 1.5rem !important;
-  }
+	.content {
+		padding: 10.5rem 1.5rem 1.5rem 1.5rem !important;
+	}
 
-  .userListBar {
-    flex-direction: column !important;
-  }
+	.userListBar {
+		flex-direction: column !important;
+	}
 
-  .postCard {
-    flex-direction: column !important;
-  }
+	.postCard {
+		flex-direction: column !important;
+	}
 
-  .textContainer {
-    margin: 1rem 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    border-top: 1px #4a4a4a solid !important;
-  }
+	.textContainer {
+		margin: 1rem 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		border-top: 1px #4a4a4a solid !important;
+	}
 
-  .userContainer {
-    flex-direction: row !important;
-    width: 100% !important;
-  }
+	.userContainer {
+		flex-direction: row !important;
+		width: 100% !important;
+	}
 
-  .iconContainer {
-    flex-direction: row !important;
-    border-top: 1px #4a4a4a solid !important;
-    border-left: none !important;
-    padding-left: 0 !important;
-    padding-top: 1rem !important;
-    justify-content: flex-end !important;
-  }
+	.iconContainer {
+		flex-direction: row !important;
+		border-top: 1px #4a4a4a solid !important;
+		border-left: none !important;
+		padding-left: 0 !important;
+		padding-top: 1rem !important;
+		justify-content: flex-end !important;
+	}
 
-  .deleteIcon {
-    margin-right: 1rem;
-  }
+	.deleteIcon {
+		margin-right: 1rem;
+	}
 
-  .postCardImage {
-    margin-right: 1rem !important;
-  }
+	.postCardImage {
+		margin-right: 1rem !important;
+	}
 
-  .modalContainer {
-    width: calc(100% - 3rem) !important;
-  }
+	.modalContainer {
+		width: calc(100% - 3rem) !important;
+	}
 }

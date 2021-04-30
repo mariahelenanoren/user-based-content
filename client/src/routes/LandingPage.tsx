@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import LandingDesktopMenu from '../components/LandingDesktopMenu';
 import Header from '../components/Header';
 import MobileHeader from '../components/MobileHeader';
@@ -44,13 +44,11 @@ const mainContainer: CSSProperties = {
 	height: '100%',
 	width: '100%',
 };
-
 const contentContainer: CSSProperties = {
 	marginLeft: '16rem',
 	width: '100%',
 	height: '100%',
 };
-
 const content: CSSProperties = {
 	padding: '5.5rem 2.5rem 2.5rem 2.5rem',
 	minHeight: '100%',

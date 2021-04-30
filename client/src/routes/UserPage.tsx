@@ -33,7 +33,6 @@ const mainContainer: CSSProperties = {
 	height: '100%',
 	width: '100%',
 };
-
 const contentContainer: CSSProperties = {
 	marginLeft: '16rem',
 	width: 'calc(100% - 16rem)',

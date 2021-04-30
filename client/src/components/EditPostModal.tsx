@@ -67,7 +67,6 @@ const modalContainer: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
 };
-
 const modalHeader: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
@@ -76,20 +75,17 @@ const modalHeader: CSSProperties = {
   borderBottom: "0.1rem solid lightgrey",
   marginBottom: "0.5rem",
 };
-
 const modalTitle: CSSProperties = {
   color: "#000000",
   fontWeight: 600,
   margin: 0,
 };
-
 const buttonContainer: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "flex-end",
 };
-
 const modalButtons: CSSProperties = {
   backgroundColor: "#4780EE",
   color: "#ffff",
@@ -104,7 +100,6 @@ const modalButtons: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
 };
-
 const textArea: CSSProperties = {
   fontFamily: "inherit",
   height: "100%",
@@ -114,7 +109,6 @@ const textArea: CSSProperties = {
   fontSize: "0.9rem",
   resize: "none",
 };
-
 const closeButton: CSSProperties = {
   border: "none",
   color: "#4780EE",

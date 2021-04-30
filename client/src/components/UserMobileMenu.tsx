@@ -81,24 +81,20 @@ const menu: CSSProperties = {
   left: 0,
   zIndex: 10,
 };
-
 const userContainer: CSSProperties = {
   marginBottom: "1.5rem",
   padding: "0 1.5rem",
   display: "flex",
   alignItems: "center",
 };
-
 const profilePictureContainer: CSSProperties = {
   position: "relative",
 };
-
 const profilePicture: CSSProperties = {
   width: "5rem",
   borderRadius: "100%",
   marginRight: "1.5rem",
 };
-
 const adminBadge: CSSProperties = {
   position: "absolute",
   borderRadius: "0.8rem",
@@ -108,11 +104,9 @@ const adminBadge: CSSProperties = {
   fontSize: "0.8rem",
   padding: "0.3rem 0.7rem",
 };
-
 const nav: CSSProperties = {
   width: "100%",
 };
-
 const navList: CSSProperties = {
   width: "100%",
   listStyle: "none",
@@ -120,13 +114,11 @@ const navList: CSSProperties = {
   margin: 0,
   borderBottom: "1px #5A5A5A solid",
 };
-
 const navItem: CSSProperties = {
   padding: "1rem 1.5rem",
   textAlign: "left",
   borderTop: "1px #5A5A5A solid",
 };
-
 const buttonContainer: CSSProperties = {
   marginTop: "1rem",
   padding: "0 1.5rem",
@@ -135,7 +127,6 @@ const buttonContainer: CSSProperties = {
   display: "flex",
   alignItems: "flex-end",
 };
-
 const outlinedButton: CSSProperties = {
   width: "100%",
   padding: "0.5rem 1rem",
