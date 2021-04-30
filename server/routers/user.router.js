@@ -81,15 +81,27 @@ router.use((req, res, next) => {
 
 /* Updates a users role */
 router.put("/api/user/:id", async (req, res) => {
-  const { role, _id } = req.body;
+  const { role, _id, _user } = req.body;
+  console.log(role);
   const doc = await UserModel.updateOne({ _id: _id }, { role: role });
+
+  /* Changes role of session if user changes their own role */
+  if (_id === _user) {
+    session.role = role;
+  }
+
   res.status(200).json("User role successfully updated");
 });
 
 /* Deletes a user */
 router.delete("/api/user/:id", async (req, res) => {
-  const { _id } = req.body;
+  const { _id, _user } = req.body;
   const doc = await UserModel.deleteOne({ _id: _id });
+
+  /* Removes session if a user deletes itself */
+  if (_id === _user) {
+    req.session = null;
+  }
   res.status(200).json("User successfully deleted");
 });
 
