@@ -46,7 +46,6 @@ export default function UserPostsPage() {
   useEffect(() => {
     if (editModal.postUpdated === true) {
       const body = { ...editModal.post };
-      console.log(body);
       const editPost = async () => {
         const res = await makeRequest("/api/post/:id", "PUT", body);
         console.log(res);

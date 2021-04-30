@@ -9,8 +9,6 @@ interface Props {
 export default function UserDesktopMenu(props: Props) {
   const user = props.user;
 
-  console.log(user);
-
   return (
     <div className="desktopMenu" style={desktopMenu}>
       <div style={profilePictureContainer}>
