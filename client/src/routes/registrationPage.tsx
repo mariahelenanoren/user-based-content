@@ -21,18 +21,18 @@ function RegistrationPage(props: Props) {
 		password: '',
 		role: role,
 	});
+	const history = useHistory();
 	async function registerUser() {
 		const body = user;
 		const res = await makeRequest('/api/register', 'POST', body);
+		const handleSubmit = (e: { preventDefault: () => void }) => {
+			e.preventDefault();
+			history.push('/login');
+		};
 		console.log(res);
 	}
 	const handleChange = (key: string, value: string) => {
 		setUser((prevState) => ({ ...prevState, [key]: value }));
-	};
-	const history = useHistory();
-	const handleSubmit = (e: { preventDefault: () => void }) => {
-		e.preventDefault();
-		history.push('/login');
 	};
 
 	return (

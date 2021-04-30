@@ -10,8 +10,8 @@ interface Props {
 }
 
 export default function UserMobileMenu(props: Props) {
-	const { user } = props;
 	const history = useHistory();
+	const { user } = props;
 	const handleClick = () => {
 		props.setMenuIsOpen(false);
 	};

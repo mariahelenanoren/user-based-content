@@ -8,8 +8,8 @@ interface Props {
 }
 
 export default function UserDesktopMenu(props: Props) {
-	const user = props.user;
 	const history = useHistory();
+	const user = props.user;
 	const logOut = async () => {
 		const res = await makeRequest('/api/logout', 'DELETE');
 		console.log(res);
