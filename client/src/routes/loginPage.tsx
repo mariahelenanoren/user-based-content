@@ -36,8 +36,7 @@ const LoginPage: React.FC<Props> = () => {
     const body = user;
     try {
       const status = await makeRequest("/api/login", "POST", body);
-      console.log(status);
-      history.push("/user");
+      window.location.href = window.location.href.replace("login", "user");
     } catch (error) {
       console.log(error);
       setError(error);
