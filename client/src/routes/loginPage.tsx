@@ -5,7 +5,6 @@ import { makeRequest } from "../helper";
 interface Props {}
 
 const LoginPage: React.FC<Props> = () => {
-
   const [user, setUser] = useState({
     userName: "",
     password: "",
@@ -49,56 +48,14 @@ const LoginPage: React.FC<Props> = () => {
           </button>
         </div>
         <div style={linkStyles}>
-          <Link to="">Har du glömt ditt lösenord? </Link>
-          <Link to="/registration">Registrera dig för Postr</Link>
+          <p className="textButton">Har du glömt ditt lösenord?</p>
+          <Link
+            className="textButton"
+            to={{ pathname: "/registration", state: { role: "user" } }}
+          >
+            Registrera dig för Postr
+          </Link>
         </div>
-
-   const [user, setUser] = useState({
-      userName: "",
-      password: "",
-   })
-   async function loginUser() {
-      const body = user;
-      const status = await makeRequest("/api/login", "POST", body)
-      console.log(status)
-   }
-   const handleChange = (key: string, value: string) => {
-      setUser(prevState => ({...prevState, [key]: value}))
-   }
-   
-   return (
-      <div style={mainStyle}>
-         <div style={box}>
-               <div style={title}>Logga in på Postr</div>
-               <div>
-                  <input
-                     style={input}
-                     type="userName"
-                     name="userName"
-                     id="userName"
-                     placeholder={'Användarnamn'}
-                     onChange={(e) => handleChange("userName", e.target.value)}
-                  />
-               </div>
-               <div>
-                  <input
-                     style={input}
-                     type="password"
-                     name="password"
-                     id="password"
-                     placeholder={'Lösenord'}
-                     onChange={(e) => handleChange("password", e.target.value)}
-                  />
-               </div>
-               <div>
-                  <button style={button} onClick={loginUser}>Logga in</button>
-               </div>
-               <div style={linkStyles} >
-               <Link className="textButton" to="">Har du glömt ditt lösenord?  </Link>
-               <Link className="textButton" to="/registration">Registrera dig för Postr</Link>
-               </div>
-         </div>
-
       </div>
     </div>
   );
@@ -133,14 +90,13 @@ const title: CSSProperties = {
   fontWeight: 500,
 };
 const input: CSSProperties = {
-
   background: "#000000",
   margin: "0.5rem",
   width: "18rem",
   height: "2.5rem",
+  color: "white",
   borderColor: "#656874",
   borderWidth: 1,
-
 };
 const button: CSSProperties = {
   backgroundColor: "#4780EE",
@@ -157,11 +113,9 @@ const button: CSSProperties = {
 };
 
 const linkStyles: CSSProperties = {
-
   display: "flex",
   flexDirection: "column",
   textDecoration: "underline",
   color: "#4780EE",
   marginTop: "0.5rem",
 };
-

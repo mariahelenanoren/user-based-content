@@ -1,6 +1,7 @@
 import { CSSProperties } from "@material-ui/styles";
 import React from "react";
 import { Link } from "react-router-dom";
+import { makeRequest } from "../helper";
 import { User } from "../interfaces";
 
 interface Props {
@@ -13,6 +14,11 @@ export default function UserMobileMenu(props: Props) {
 
   const handleClick = () => {
     props.setMenuIsOpen(false);
+  };
+
+  const logOut = async () => {
+    const res = await makeRequest("/api/logout", "DELETE");
+    console.log(res);
   };
 
   return (
@@ -50,7 +56,11 @@ export default function UserMobileMenu(props: Props) {
         </ul>
       </nav>
       <div style={buttonContainer}>
-        <button className="outlinedButton" style={outlinedButton}>
+        <button
+          onClick={logOut}
+          className="outlinedButton"
+          style={outlinedButton}
+        >
           Logga ut
         </button>
       </div>

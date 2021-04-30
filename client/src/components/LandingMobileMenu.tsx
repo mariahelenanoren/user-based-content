@@ -11,15 +11,23 @@ export default function LandingMobileMenu() {
             Logga in
           </button>
         </Link>
-        <Link to={"/registration"} style={{ width: "100%" }}>
+        <Link
+          to={{ pathname: "/registration", state: { role: "user" } }}
+          style={{ width: "100%" }}
+        >
           <button className="outlinedButton" style={outlinedButton}>
             Registrera dig
           </button>
         </Link>
       </div>
-      <button className="textButton" style={textButton}>
-        Admin? Registrera dig här
-      </button>
+      <Link
+        to={{ pathname: "/registration", state: { role: "admin" } }}
+        style={{ width: "100%" }}
+      >
+        <button className="textButton" style={textButton}>
+          Admin? Registrera dig här
+        </button>
+      </Link>
     </div>
   );
 }
